@@ -8,5 +8,11 @@ class Personaje{
         ~Personaje();
     private:
         std::string nombre;
+        int vida, ataque, velocidad;
+        Posicion pos;
+    public:
+        int ataque();
+        void recibirAtaque(Personaje *enemigo);
+        Posicion moverse();
 
 }
