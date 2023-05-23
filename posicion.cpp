@@ -2,21 +2,25 @@
 #include <string>
 #include "posicion.h"
 
-Posicion::Posicion(int x, int y){
-    this->x = x;
-    this->y = y;
+Posicion::Posicion(int x, int y) {
+    this -> x = x;
+    this -> y = y;
 }
 
-Posicion::~Posicion(){}
+Posicion::~Posicion() {}
 
-int Posicion::getX(){
-    std::cout <<  x << std::endl;
+// Getter
+int Posicion::getX() {
+    return x;
 }
 
-int Posicion::getY(){
-    std::cout <<  y << std::endl;
+// Getter
+int Posicion::getY() {
+    return y;
 }
 
-void Posicion::set(int x, int y){
-
+// Setter
+void Posicion::set(int x, int y) {
+    this -> x = x;
+    this -> y = y;
 }
