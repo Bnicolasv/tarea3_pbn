@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include "personaje.h"
-#include "posicion.h"
 #include "mapa.h"
 
 
@@ -10,9 +9,20 @@ Mapa::Mapa(int ancho, int alto) {
     this -> alto = alto;
 }
 
-Mapa::~Mapa() {
 
+Mapa::~Mapa() {
 }
+
+
+int Mapa::casillaCentralX() {
+    return ancho / 2;
+}
+
+
+int Mapa::casillaCentralY() {
+    return alto / 2;
+} 
+
 
 void Mapa::crearMapa(int ancho, int alto) {
 

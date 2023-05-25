@@ -2,6 +2,7 @@
 #include <string>
 #include <cstring>
 // #include "posicion.h"
+#include "mapa.h"
 
 using namespace std;
 
@@ -39,6 +40,10 @@ int main () {
         cout << "|          |          |" << endl;
     }
 
+
+    // Probando obtencion de casilla central
+    Mapa mapa(9, 7);
+    cout << "(" << mapa.casillaCentralX() << "," << mapa.casillaCentralY() << ")" << endl;
     return 0;
 }
 

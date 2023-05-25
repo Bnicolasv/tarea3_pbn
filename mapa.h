@@ -6,6 +6,8 @@ class Mapa {
         Mapa(int ancho, int alto);
         ~Mapa();
 
+        int casillaCentralX();
+        int casillaCentralY();
         void crearMapa(int ancho, int alto);
         void agregarPersonaje(Personaje* personaje);
         void eliminarPersonaje(Personaje* personaje);
