@@ -11,7 +11,7 @@ void Juego::jugar(){
 
 }
 
-int Juego::chequearGanador(){
+void Juego::chequearGanador(){
 
 }
 

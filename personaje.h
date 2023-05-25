@@ -4,15 +4,15 @@
 
 class Personaje {
     public:
-        Personaje(std::string nombre, int vida, int ataque, int velocidad, Posicion pos);
+        Personaje(std::string nombre, int vida, int fuerza, int velocidad, Posicion pos);
         ~Personaje();
 
-        int getAtaque();
+        int ataque();
         Posicion moverse();
         void recibirAtaque(Personaje* enemigo);
 
     private:
         std::string nombre;
-        int vida, ataque, velocidad;
-        Posicion pos;
+        int vida, fuerza, velocidad;
+        Posicion* pos;
 };
