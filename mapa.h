@@ -7,8 +7,8 @@ class Mapa {
         ~Mapa();
 
         void crearMapa(int ancho, int alto);
-        void agregarPersonaje(Personaje *personaje);
-        void eliminarPersonaje(Personaje *Personaje);
+        void agregarPersonaje(Personaje* personaje);
+        void eliminarPersonaje(Personaje* personaje);
 
     private:
         int ancho, alto;

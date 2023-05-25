@@ -18,10 +18,10 @@ void Mapa::crearMapa(int ancho, int alto) {
 
 }
 
-void Mapa::agregarPersonaje(Personaje *personaje) {
+void Mapa::agregarPersonaje(Personaje* personaje) {
 
 }
 
-void Mapa::eliminarPersonaje(Personaje *personaje) {
+void Mapa::eliminarPersonaje(Personaje* personaje) {
 
 }
