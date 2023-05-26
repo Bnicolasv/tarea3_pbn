@@ -4,7 +4,6 @@
 #include <sstream>
 #include <fstream>
 #include "personaje.h"
-#include <vector>
 
 using namespace std;
 
@@ -33,6 +32,7 @@ int main() {
 
     Personaje *soldados_equipo1[cantidad_de_soldados1];
 
+    cout << "SOLDADOS EQUIPO 1" << endl;
     for (int i = 0; i < cantidad_de_soldados1; ++i) {
         soldados_equipo1[i] = new Personaje();
         getline(archivo, linea);
@@ -55,13 +55,13 @@ int main() {
         Posicion p = Posicion(pos_x, pos_y);
 
         soldados_equipo1[i] = new Personaje(nombre, vida, fuerza, velocidad, p);
-        // cout << soldados_equipo1[i] << endl;
-        cout << soldados_equipo1[i]->getNombre();
-        cout << soldados_equipo1[i]->getVida();
-        cout << soldados_equipo1[i]->getFuerza();
-        cout << soldados_equipo1[i]->getVelocidad();
-        cout << soldados_equipo1[i]->getPosicion().getX();
-        cout << soldados_equipo1[i]->getPosicion().getY() << endl;
+
+        cout << soldados_equipo1[i] -> getNombre() << " ";
+        cout << soldados_equipo1[i] -> getVida() << " ";
+        cout << soldados_equipo1[i] -> getFuerza() << " ";
+        cout << soldados_equipo1[i] -> getVelocidad() << " ";
+        cout << soldados_equipo1[i] -> getPosicion().getX() << " ";
+        cout << soldados_equipo1[i] -> getPosicion().getY() << endl;
     }
 
     getline(archivo, linea);
@@ -71,6 +71,7 @@ int main() {
 
     Personaje *soldados_equipo2[cantidad_de_soldados2];
 
+    cout << "SOLDADOS EQUIPO 2" << endl;
     for (int i = 0; i < cantidad_de_soldados2; ++i) {
         soldados_equipo2[i] = new Personaje();
         getline(archivo, linea);
@@ -93,13 +94,13 @@ int main() {
         Posicion p = Posicion(pos_x, pos_y);
 
         soldados_equipo2[i] = new Personaje(nombre, vida, fuerza, velocidad, p);
-        // cout << soldados_equipo2[i] << endl;
-        cout << soldados_equipo2[i]->getNombre();
-        cout << soldados_equipo2[i]->getVida();
-        cout << soldados_equipo2[i]->getFuerza();
-        cout << soldados_equipo2[i]->getVelocidad();
-        cout << soldados_equipo2[i]->getPosicion().getX();
-        cout << soldados_equipo2[i]->getPosicion().getY() << endl;
+        
+        cout << soldados_equipo2[i] -> getNombre() << " ";
+        cout << soldados_equipo2[i] -> getVida() << " ";
+        cout << soldados_equipo2[i] -> getFuerza() << " ";
+        cout << soldados_equipo2[i] -> getVelocidad() << " ";
+        cout << soldados_equipo2[i] -> getPosicion().getX() << " ";
+        cout << soldados_equipo2[i] -> getPosicion().getY() << endl;
     }
 
     archivo.close();
