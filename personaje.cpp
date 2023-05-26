@@ -11,9 +11,7 @@ Personaje::Personaje(std::string nombre, int vida, int fuerza, int velocidad, Po
     this -> pos = &pos;
 }
 
-Personaje::Personaje(){
-    
-}
+Personaje::Personaje() {}
 
 Personaje::~Personaje() {}
 
@@ -26,7 +24,7 @@ int Personaje::getVida() const{
     return vida;
 }
 
-int Personaje::getFuerza() const{
+int Personaje::ataque() const{
     return fuerza;
 }
 
@@ -39,16 +37,10 @@ Posicion Personaje::getPosicion() const{
 }
 
 
-
-
-// int Personaje::ataque() {
-//     return fuerza;
-// }
-
 // Posicion Personaje::moverse() {
 
 // }
 
-// void Personaje::recibirAtaque(Personaje* enemigo) {
-//     this -> vida -= enemigo -> ataque();
-// }
+void Personaje::recibirAtaque(Personaje* enemigo) {
+    vida -= enemigo -> ataque();
+}

@@ -58,7 +58,7 @@ int main() {
 
         cout << soldados_equipo1[i] -> getNombre() << " ";
         cout << soldados_equipo1[i] -> getVida() << " ";
-        cout << soldados_equipo1[i] -> getFuerza() << " ";
+        cout << soldados_equipo1[i] -> ataque() << " ";
         cout << soldados_equipo1[i] -> getVelocidad() << " ";
         cout << soldados_equipo1[i] -> getPosicion().getX() << " ";
         cout << soldados_equipo1[i] -> getPosicion().getY() << endl;
@@ -97,7 +97,7 @@ int main() {
         
         cout << soldados_equipo2[i] -> getNombre() << " ";
         cout << soldados_equipo2[i] -> getVida() << " ";
-        cout << soldados_equipo2[i] -> getFuerza() << " ";
+        cout << soldados_equipo2[i] -> ataque() << " ";
         cout << soldados_equipo2[i] -> getVelocidad() << " ";
         cout << soldados_equipo2[i] -> getPosicion().getX() << " ";
         cout << soldados_equipo2[i] -> getPosicion().getY() << endl;

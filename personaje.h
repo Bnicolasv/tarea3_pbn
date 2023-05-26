@@ -8,12 +8,11 @@ class Personaje {
         ~Personaje();
         Personaje();
 
-        int ataque();
         Posicion moverse();
         void recibirAtaque(Personaje* enemigo);
         std::string getNombre() const;
         int getVida() const;
-        int getFuerza() const;
+        int ataque() const;
         int getVelocidad() const;
         Posicion getPosicion() const;
 
