@@ -6,36 +6,41 @@
 #include "personaje.h"
 #include <vector>
 
+using namespace std;
+
 int main() {
-    std::ifstream archivo("soldados_short.txt");
+    ifstream archivo("soldados_short.txt");
 
     if (!archivo) {
-        std::cerr << "Error al abrir el archivo." << std::endl;
+        cerr << "Error al abrir el archivo." << endl;
         return 1;
     }
 
-    std::string linea;
-    std::getline(archivo, linea);
+    string linea;
+    getline(archivo, linea);
 
-    std::stringstream dimensiones(linea);
-    int ancho, alto;
-    dimensiones >> ancho >> alto;
+    stringstream dimensiones(linea);
+    string ancho_str, alto_str;
+    getline(dimensiones, ancho_str, ',');
+    getline(dimensiones, alto_str, ',');
+    int ancho = stoi(ancho_str);
+    int alto = stoi(alto_str);
 
-    std::getline(archivo, linea);
-    std::stringstream soldados1(linea);
+    getline(archivo, linea);
+    stringstream soldados1(linea);
     int cantidad_de_soldados1;
     soldados1 >> cantidad_de_soldados1;
 
-    std::vector<Personaje> soldados_equipo1;
+    vector<Personaje> soldados_equipo1;
 
     for (int i = 0; i < cantidad_de_soldados1; ++i) {
-        std::getline(archivo, linea);
-        std::stringstream soldado1(linea);
-        std::string nombre;
+        getline(archivo, linea);
+        stringstream soldado1(linea);
+        string nombre;
         int vida, ataque, velocidad, pos_x, pos_y;
 
         // Utilizamos getline con delimitador ',' en lugar de espacio
-        std::getline(soldado1, nombre, ',');
+        getline(soldado1, nombre, ',');
         soldado1 >> vida;
         soldado1.ignore(); // Ignoramos la coma
         soldado1 >> ataque;
@@ -50,21 +55,21 @@ int main() {
         soldados_equipo1.emplace_back(nombre, vida, ataque, velocidad, p);
     }
 
-    std::getline(archivo, linea);
-    std::stringstream soldados2(linea);
+    getline(archivo, linea);
+    stringstream soldados2(linea);
     int cantidad_de_soldados2;
     soldados2 >> cantidad_de_soldados2;
 
-    std::vector<Personaje> soldados_equipo2;
+    vector<Personaje> soldados_equipo2;
 
     for (int i = 0; i < cantidad_de_soldados2; ++i) {
-        std::getline(archivo, linea);
-        std::stringstream soldado2(linea);
-        std::string nombre;
+        getline(archivo, linea);
+        stringstream soldado2(linea);
+        string nombre;
         int vida, ataque, velocidad, pos_x, pos_y;
 
         // Utilizamos getline con delimitador ',' en lugar de espacio
-        std::getline(soldado2, nombre, ',');
+        getline(soldado2, nombre, ',');
         soldado2 >> vida;
         soldado2.ignore(); // Ignoramos la coma
         soldado2 >> ataque;
@@ -81,25 +86,25 @@ int main() {
 
     archivo.close();
 
-    std::cout << "Soldados del equipo 1:" << std::endl;
+    cout << "Soldados del equipo 1:" << endl;
     for (const auto& Personaje : soldados_equipo1) {
-        std::cout << "Nombre: " << Personaje.getNombre() << std::endl;
-        std::cout << "Vida: " << Personaje.getVida() << std::endl;
-        std::cout << "Ataque: " << Personaje.getFuerza() << std::endl;
-        std::cout << "Velocidad: " << Personaje.getVelocidad() << std::endl;
-        std::cout << "Posicion: " << Personaje.getPosicion().getX() << "," << Personaje.getPosicion().getY() << std::endl;
-        std::cout << std::endl;
+        cout << "Nombre: " << Personaje.getNombre() << endl;
+        cout << "Vida: " << Personaje.getVida() << endl;
+        cout << "Ataque: " << Personaje.getFuerza() << endl;
+        cout << "Velocidad: " << Personaje.getVelocidad() << endl;
+        cout << "Posicion: " << Personaje.getPosicion().getX() << "," << Personaje.getPosicion().getY() << endl;
+        cout << endl;
     }
 
     // Imprimir soldados_equipo2
-    std::cout << "Soldados del equipo 2:" << std::endl;
+    cout << "Soldados del equipo 2:" << endl;
     for (const auto& Personaje : soldados_equipo2) {
-        std::cout << "Nombre: " << Personaje.getNombre() << std::endl;
-        std::cout << "Vida: " << Personaje.getVida() << std::endl;
-        std::cout << "Ataque: " << Personaje.getFuerza() << std::endl;
-        std::cout << "Velocidad: " << Personaje.getVelocidad() << std::endl;
-        std::cout << "Posicion: " << Personaje.getPosicion().getX() << "," << Personaje.getPosicion().getY() << std::endl;
-        std::cout << std::endl;
+        cout << "Nombre: " << Personaje.getNombre() << endl;
+        cout << "Vida: " << Personaje.getVida() << endl;
+        cout << "Ataque: " << Personaje.getFuerza() << endl;
+        cout << "Velocidad: " << Personaje.getVelocidad() << endl;
+        cout << "Posicion: " << Personaje.getPosicion().getX() << "," << Personaje.getPosicion().getY() << endl;
+        cout << endl;
     }
     return 0;
 }
