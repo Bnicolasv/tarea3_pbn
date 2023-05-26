@@ -6,6 +6,7 @@ class Personaje {
     public:
         Personaje(std::string nombre, int vida, int fuerza, int velocidad, Posicion pos);
         ~Personaje();
+        Personaje();
 
         int ataque();
         Posicion moverse();

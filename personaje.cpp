@@ -11,6 +11,10 @@ Personaje::Personaje(std::string nombre, int vida, int fuerza, int velocidad, Po
     this -> pos = &pos;
 }
 
+Personaje::Personaje(){
+    
+}
+
 Personaje::~Personaje() {}
 
 //Getters

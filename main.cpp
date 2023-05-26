@@ -31,19 +31,20 @@ int main() {
     int cantidad_de_soldados1;
     soldados1 >> cantidad_de_soldados1;
 
-    vector<Personaje> soldados_equipo1;
+    Personaje *soldados_equipo1[cantidad_de_soldados1];
 
     for (int i = 0; i < cantidad_de_soldados1; ++i) {
+        soldados_equipo1[i] = new Personaje();
         getline(archivo, linea);
         stringstream soldado1(linea);
         string nombre;
-        int vida, ataque, velocidad, pos_x, pos_y;
+        int vida, fuerza, velocidad, pos_x, pos_y;
 
         // Utilizamos getline con delimitador ',' en lugar de espacio
         getline(soldado1, nombre, ',');
         soldado1 >> vida;
         soldado1.ignore(); // Ignoramos la coma
-        soldado1 >> ataque;
+        soldado1 >> fuerza;
         soldado1.ignore();
         soldado1 >> velocidad;
         soldado1.ignore();
@@ -52,7 +53,15 @@ int main() {
         soldado1 >> pos_y;
 
         Posicion p = Posicion(pos_x, pos_y);
-        soldados_equipo1.emplace_back(nombre, vida, ataque, velocidad, p);
+
+        soldados_equipo1[i] = new Personaje(nombre, vida, fuerza, velocidad, p);
+        cout << soldados_equipo1[i] << endl;
+        cout << soldados_equipo1[i]->getNombre();
+        cout << soldados_equipo1[i]->getVida();
+        cout << soldados_equipo1[i]->getFuerza();
+        cout << soldados_equipo1[i]->getVelocidad();
+        cout << soldados_equipo1[i]->getPosicion().getX();
+        cout << soldados_equipo1[i]->getPosicion().getY() << endl;
     }
 
     getline(archivo, linea);
@@ -60,19 +69,20 @@ int main() {
     int cantidad_de_soldados2;
     soldados2 >> cantidad_de_soldados2;
 
-    vector<Personaje> soldados_equipo2;
+    Personaje *soldados_equipo2[cantidad_de_soldados2];
 
     for (int i = 0; i < cantidad_de_soldados2; ++i) {
+        soldados_equipo2[i] = new Personaje();
         getline(archivo, linea);
         stringstream soldado2(linea);
         string nombre;
-        int vida, ataque, velocidad, pos_x, pos_y;
+        int vida, fuerza, velocidad, pos_x, pos_y;
 
         // Utilizamos getline con delimitador ',' en lugar de espacio
         getline(soldado2, nombre, ',');
         soldado2 >> vida;
         soldado2.ignore(); // Ignoramos la coma
-        soldado2 >> ataque;
+        soldado2 >> fuerza;
         soldado2.ignore();
         soldado2 >> velocidad;
         soldado2.ignore();
@@ -81,31 +91,18 @@ int main() {
         soldado2 >> pos_y;
 
         Posicion p = Posicion(pos_x, pos_y);
-        soldados_equipo2.emplace_back(nombre, vida, ataque, velocidad, p);
+
+        soldados_equipo2[i] = new Personaje(nombre, vida, fuerza, velocidad, p);
+        cout << soldados_equipo2[i] << endl;
+        cout << soldados_equipo2[i]->getNombre();
+        cout << soldados_equipo2[i]->getVida();
+        cout << soldados_equipo2[i]->getFuerza();
+        cout << soldados_equipo2[i]->getVelocidad();
+        cout << soldados_equipo2[i]->getPosicion().getX();
+        cout << soldados_equipo2[i]->getPosicion().getY() << endl;
     }
 
     archivo.close();
-
-    cout << "Soldados del equipo 1:" << endl;
-    for (const auto& Personaje : soldados_equipo1) {
-        cout << "Nombre: " << Personaje.getNombre() << endl;
-        cout << "Vida: " << Personaje.getVida() << endl;
-        cout << "Ataque: " << Personaje.getFuerza() << endl;
-        cout << "Velocidad: " << Personaje.getVelocidad() << endl;
-        cout << "Posicion: " << Personaje.getPosicion().getX() << "," << Personaje.getPosicion().getY() << endl;
-        cout << endl;
-    }
-
-    // Imprimir soldados_equipo2
-    cout << "Soldados del equipo 2:" << endl;
-    for (const auto& Personaje : soldados_equipo2) {
-        cout << "Nombre: " << Personaje.getNombre() << endl;
-        cout << "Vida: " << Personaje.getVida() << endl;
-        cout << "Ataque: " << Personaje.getFuerza() << endl;
-        cout << "Velocidad: " << Personaje.getVelocidad() << endl;
-        cout << "Posicion: " << Personaje.getPosicion().getX() << "," << Personaje.getPosicion().getY() << endl;
-        cout << endl;
-    }
     return 0;
 }
 
