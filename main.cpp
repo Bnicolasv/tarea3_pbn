@@ -55,7 +55,7 @@ int main() {
         Posicion p = Posicion(pos_x, pos_y);
 
         soldados_equipo1[i] = new Personaje(nombre, vida, fuerza, velocidad, p);
-        cout << soldados_equipo1[i] << endl;
+        // cout << soldados_equipo1[i] << endl;
         cout << soldados_equipo1[i]->getNombre();
         cout << soldados_equipo1[i]->getVida();
         cout << soldados_equipo1[i]->getFuerza();
@@ -93,7 +93,7 @@ int main() {
         Posicion p = Posicion(pos_x, pos_y);
 
         soldados_equipo2[i] = new Personaje(nombre, vida, fuerza, velocidad, p);
-        cout << soldados_equipo2[i] << endl;
+        // cout << soldados_equipo2[i] << endl;
         cout << soldados_equipo2[i]->getNombre();
         cout << soldados_equipo2[i]->getVida();
         cout << soldados_equipo2[i]->getFuerza();
@@ -103,6 +103,15 @@ int main() {
     }
 
     archivo.close();
+
+    for (int i = 0; i < cantidad_de_soldados1; i++) {
+        delete soldados_equipo1[i];
+    }
+
+    for (int i = 0; i < cantidad_de_soldados2; i++) {
+        delete soldados_equipo2[i];
+    }
+    
     return 0;
 }
 
