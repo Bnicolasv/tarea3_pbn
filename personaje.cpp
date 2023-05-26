@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "personaje.h"
-#include "posicion.h"
+
 
 Personaje::Personaje(std::string nombre, int vida, int fuerza, int velocidad, Posicion pos) {
     this -> nombre = nombre;
@@ -13,14 +13,38 @@ Personaje::Personaje(std::string nombre, int vida, int fuerza, int velocidad, Po
 
 Personaje::~Personaje() {}
 
-int Personaje::ataque() {
+//Getters
+
+std::string Personaje::getNombre() const{
+    return nombre;
+}
+int Personaje::getVida() const{
+    return vida;
+}
+
+int Personaje::getFuerza() const{
     return fuerza;
 }
 
-Posicion Personaje::moverse() {
-
+int Personaje::getVelocidad() const{
+    return velocidad;
 }
 
-void Personaje::recibirAtaque(Personaje* enemigo) {
-    this -> vida -= enemigo -> ataque();
+Posicion Personaje::getPosicion() const{
+    return *pos;
 }
+
+
+
+
+// int Personaje::ataque() {
+//     return fuerza;
+// }
+
+// Posicion Personaje::moverse() {
+
+// }
+
+// void Personaje::recibirAtaque(Personaje* enemigo) {
+//     this -> vida -= enemigo -> ataque();
+// }
