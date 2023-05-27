@@ -11,8 +11,8 @@ int main() {
     ifstream archivo("soldados_short.txt");
 
     if (!archivo) {
-        cerr << "Error al abrir el archivo." << endl;
-        return 1;
+    cerr << "Error al abrir el archivo." << endl;
+    return 1;    
     }
 
     string linea;
@@ -30,11 +30,10 @@ int main() {
     int cantidad_de_soldados1;
     soldados1 >> cantidad_de_soldados1;
 
-    Personaje *soldados_equipo1[cantidad_de_soldados1];
+    Personaje *soldados_ejercito1[cantidad_de_soldados1];
 
-    cout << "SOLDADOS EQUIPO 1" << endl;
-    for (int i = 0; i < cantidad_de_soldados1; ++i) {
-        soldados_equipo1[i] = new Personaje();
+    cout << "SOLDADOS EJERCITO 1" << endl;
+    for (int i = 0; i < cantidad_de_soldados1; i++) {
         getline(archivo, linea);
         stringstream soldado1(linea);
         string nombre;
@@ -52,16 +51,11 @@ int main() {
         soldado1.ignore();
         soldado1 >> pos_y;
 
-        Posicion p = Posicion(pos_x, pos_y);
+        Posicion pos = Posicion(pos_x, pos_y);
 
-        soldados_equipo1[i] = new Personaje(nombre, vida, fuerza, velocidad, p);
+        soldados_ejercito1[i] = new Personaje(nombre, vida, fuerza, velocidad, pos);
 
-        cout << soldados_equipo1[i] -> getNombre() << " ";
-        cout << soldados_equipo1[i] -> getVida() << " ";
-        cout << soldados_equipo1[i] -> ataque() << " ";
-        cout << soldados_equipo1[i] -> getVelocidad() << " ";
-        cout << soldados_equipo1[i] -> getPosicion().getX() << " ";
-        cout << soldados_equipo1[i] -> getPosicion().getY() << endl;
+        cout << soldados_ejercito1[i] << endl;
     }
 
     getline(archivo, linea);
@@ -69,20 +63,18 @@ int main() {
     int cantidad_de_soldados2;
     soldados2 >> cantidad_de_soldados2;
 
-    Personaje *soldados_equipo2[cantidad_de_soldados2];
+    Personaje *soldados_ejercito2[cantidad_de_soldados2];
 
-    cout << "SOLDADOS EQUIPO 2" << endl;
-    for (int i = 0; i < cantidad_de_soldados2; ++i) {
-        soldados_equipo2[i] = new Personaje();
+    cout << "SOLDADOS EJERCITO 2" << endl;
+    for (int i = 0; i < cantidad_de_soldados2; i++) {
         getline(archivo, linea);
         stringstream soldado2(linea);
         string nombre;
         int vida, fuerza, velocidad, pos_x, pos_y;
 
-        // Utilizamos getline con delimitador ',' en lugar de espacio
         getline(soldado2, nombre, ',');
         soldado2 >> vida;
-        soldado2.ignore(); // Ignoramos la coma
+        soldado2.ignore(); 
         soldado2 >> fuerza;
         soldado2.ignore();
         soldado2 >> velocidad;
@@ -91,26 +83,21 @@ int main() {
         soldado2.ignore();
         soldado2 >> pos_y;
 
-        Posicion p = Posicion(pos_x, pos_y);
+        Posicion pos = Posicion(pos_x, pos_y);
 
-        soldados_equipo2[i] = new Personaje(nombre, vida, fuerza, velocidad, p);
-        
-        cout << soldados_equipo2[i] -> getNombre() << " ";
-        cout << soldados_equipo2[i] -> getVida() << " ";
-        cout << soldados_equipo2[i] -> ataque() << " ";
-        cout << soldados_equipo2[i] -> getVelocidad() << " ";
-        cout << soldados_equipo2[i] -> getPosicion().getX() << " ";
-        cout << soldados_equipo2[i] -> getPosicion().getY() << endl;
+        soldados_ejercito2[i] = new Personaje(nombre, vida, fuerza, velocidad, pos);
+
+        cout << soldados_ejercito2[i] << endl;        
     }
 
     archivo.close();
 
     for (int i = 0; i < cantidad_de_soldados1; i++) {
-        delete soldados_equipo1[i];
+        delete soldados_ejercito1[i];
     }
 
     for (int i = 0; i < cantidad_de_soldados2; i++) {
-        delete soldados_equipo2[i];
+        delete soldados_ejercito2[i];
     }
     
     return 0;
