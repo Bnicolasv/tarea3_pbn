@@ -7,6 +7,9 @@
 
 
 /*
+void Juego::jugar() {}
+
+
 void Juego::chequearGanador() {
     // Idea de implementacion
     if (soldados_ejercito1 == 0) {
@@ -51,7 +54,6 @@ void Juego::combate(Personaje *p1, Personaje *p2) {
         std::cout << "La velocidad de " << atacante->getNombre() << " es de " << atacante->getVelocidad() << ",";
         std::cout << "la de " << defensor->getNombre() << " es de " << defensor->getVelocidad() << ",";
         std::cout << "comienza atacando" << atacante->getNombre() << std::endl;
-
     }
 
     else if (p1->ataque() > p2->ataque()) {
@@ -79,7 +81,6 @@ void Juego::combate(Personaje *p1, Personaje *p2) {
         std::cout << "La vida de " << atacante->getNombre() << " es de " << atacante->getVida() << ",";
         std::cout << "la de " << defensor->getNombre() << " es de " << defensor->getVida() << ",";
         std::cout << "comienza atacando" << atacante->getNombre() << std::endl;
-
     }
 
     else if (p2->getVida() > p1->getVida()) {
