@@ -41,26 +41,48 @@ void Juego::combate(Personaje *p1, Personaje *p2) {
     else if (p2->getVelocidad() > p1->getVelocidad()) {
         atacante = p2;
         defensor = p1;
+
+        std::cout << "La velocidad de " << atacante->getNombre() << " es de " << atacante->getVelocidad() << ",";
+        std::cout << "la de " << defensor->getNombre() << " es de " << defensor->getVelocidad() << ",";
+        std::cout << "comienza atacando" << atacante->getNombre() << std::endl;
+
     }
 
     else if (p1->ataque() > p2->ataque()) {
         atacante = p1;
         defensor = p2;
+        
+        std::cout << "El ataque de " << atacante->getNombre() << " es de " << atacante->ataque() << ",";
+        std::cout << "el de " << defensor->getNombre() << " es de " << defensor->ataque() << ",";
+        std::cout << "comienza atacando" << atacante->getNombre() << std::endl;
     }
 
     else if (p2->ataque() > p1->ataque()) {
         atacante = p2;
         defensor = p1;
+
+        std::cout << "El ataque de " << atacante->getNombre() << " es de " << atacante->ataque() << ",";
+        std::cout << "el de " << defensor->getNombre() << " es de " << defensor->ataque() << ",";
+        std::cout << "comienza atacando" << atacante->getNombre() << std::endl;
     }
 
     else if (p1->getVida() > p2->getVida()) {
         atacante = p1;
         defensor = p2;
+
+        std::cout << "La vida de " << atacante->getNombre() << " es de " << atacante->getVida() << ",";
+        std::cout << "la de " << defensor->getNombre() << " es de " << defensor->getVida() << ",";
+        std::cout << "comienza atacando" << atacante->getNombre() << std::endl;
+
     }
 
     else if (p2->getVida() > p1->getVida()) {
         atacante = p2;
         defensor = p1;
+
+        std::cout << "La vida de " << atacante->getNombre() << " es de " << atacante->getVida() << ",";
+        std::cout << "la de " << defensor->getNombre() << " es de " << defensor->getVida() << ",";
+        std::cout << "comienza atacando" << atacante->getNombre() << std::endl;
     }
 
     // Una vez que ya se sabe quien ataca y quien defiende, comienzan a pegarse hasta que uno de ellos pierda
