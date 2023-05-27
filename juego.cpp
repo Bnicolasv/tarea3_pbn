@@ -6,17 +6,23 @@
 #include "mapa.h"
 
 
-// void Juego::chequearGanador(){
+/*
+void Juego::chequearGanador() {
+    // Idea de implementacion
+    if (soldados_ejercito1 == 0) {
+        std::cout << "Ha ganado el ejercito 2!" << std::endl;
+    }
 
-// }
+    else if (soldados_ejercito2 == 0) {
+        std::cout << "Ha ganado el ejercito 1!" << std::endl;
+    }
+}
 
-// int Juego::calcularTurno(){
+int Juego::calcularTurno() {}
+void Juego::mostrarMapa() {}
 
-// }
+*/
 
-// void Juego::mostrarMapa(){
-
-// }
 
 void Juego::combate(Personaje *p1, Personaje *p2) {
     // Ataca primero el personaje con mayor velocidad. Si tienen la misma velocidad, parte el que tenga 
