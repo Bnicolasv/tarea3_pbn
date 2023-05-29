@@ -5,8 +5,6 @@
 
 class Juego{
     public:
-        Juego();
-        ~Juego();
         void jugar();
         void chequearGanador();
         int calcularTurno();

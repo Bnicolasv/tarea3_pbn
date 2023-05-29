@@ -25,7 +25,7 @@ int Mapa::casillaCentralY() {
 
 
 void Mapa::crearMapa(int ancho, int alto) {
-
+    // BITBUCKET PERO EN C++
 }
 
 void Mapa::agregarPersonaje(Personaje* personaje) {
