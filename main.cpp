@@ -53,9 +53,10 @@ int main() {
 
         Posicion pos = Posicion(pos_x, pos_y);
 
-        soldados_ejercito1[i] = new Personaje(nombre, vida, fuerza, velocidad, pos);
+        soldados_ejercito1[i] = new Personaje(nombre, vida, fuerza, velocidad, pos, 1);
 
-        cout << soldados_ejercito1[i] << endl;
+        // cout << soldados_ejercito1[i] << endl;
+        cout << soldados_ejercito1[i]->getEjercito() << endl;
     }
 
     getline(archivo, linea);
@@ -85,9 +86,10 @@ int main() {
 
         Posicion pos = Posicion(pos_x, pos_y);
 
-        soldados_ejercito2[i] = new Personaje(nombre, vida, fuerza, velocidad, pos);
+        soldados_ejercito2[i] = new Personaje(nombre, vida, fuerza, velocidad, pos, 2);
 
-        cout << soldados_ejercito2[i] << endl;        
+        // cout << soldados_ejercito2[i] << endl;  
+        cout << soldados_ejercito2[i]->getEjercito() << endl;      
     }
 
     archivo.close();

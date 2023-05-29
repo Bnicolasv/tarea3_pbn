@@ -5,11 +5,11 @@
 #include "posicion.h"
 #include "mapa.h"
 
+void Juego::jugar() {
+
+}
 
 /*
-void Juego::jugar() {}
-
-
 void Juego::chequearGanador() {
     // Idea de implementacion
     if (soldados_ejercito1 == 0) {
@@ -20,11 +20,16 @@ void Juego::chequearGanador() {
         std::cout << "Ha ganado el ejercito 1!" << std::endl;
     }
 }
-
-int Juego::calcularTurno() {}
-void Juego::mostrarMapa() {}
-
 */
+
+int Juego::calcularTurno() {
+
+}
+
+
+void Juego::mostrarMapa() {
+
+}
 
 
 void Juego::combate(Personaje *p1, Personaje *p2) {
