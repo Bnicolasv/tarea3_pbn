@@ -3,4 +3,4 @@ juego.o
 mapa.o
 personaje.o
 posicion.o
-.vscode/
+/.vscode
