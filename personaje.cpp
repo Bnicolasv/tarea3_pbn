@@ -8,7 +8,7 @@ Personaje::Personaje(std::string nombre, int vida, int fuerza, int velocidad, Po
     this -> vida = vida;
     this -> fuerza = fuerza;
     this -> velocidad = velocidad;
-    this -> pos = &pos;
+    this -> pos = new Posicion(pos.getX(), pos.getY());
     this -> ejercito = ejercito;
 }
 
@@ -43,14 +43,6 @@ void Personaje::recibirAtaque(Personaje* enemigo) {
     vida -= enemigo -> ataque();
 }
 
-
 Posicion Personaje::moverse() {
-
-    
-
-
-
-
-
-
+    // cada vez que se mueva debe usarse personaje->getPosicion().set(NUEVA POSICION HACIA DONDE SE MOVIO)
 }
