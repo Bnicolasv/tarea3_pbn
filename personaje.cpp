@@ -44,5 +44,12 @@ void Personaje::recibirAtaque(Personaje* enemigo) {
 }
 
 Posicion Personaje::moverse() {
+    
+
+
+
+
+
+
     // cada vez que se mueva debe usarse personaje->getPosicion().set(NUEVA POSICION HACIA DONDE SE MOVIO)
 }

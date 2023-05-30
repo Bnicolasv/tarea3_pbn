@@ -13,6 +13,7 @@ class Mapa {
         void agregarPersonaje(Personaje* personaje);
         void eliminarPersonaje(Personaje* personaje);
         void mostrarCasillas(); 
+        std::vector<std::vector<Personaje*>> getCasillas();
 
     private:
         int ancho, alto;

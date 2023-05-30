@@ -80,3 +80,7 @@ void Mapa::mostrarCasillas() {
     // // CAMBIAR ESTO EN BASE AL ANCHO DEL TABLERO Y NO ALGO GENERICO
     std::cout << "------------------------------------------------------" << std::endl;
 }
+
+std::vector<std::vector<Personaje*>> Mapa::getCasillas() {
+    return casillas;
+}

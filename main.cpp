@@ -3,6 +3,7 @@
 #include <cstring>
 #include <sstream>
 #include <fstream>
+#include <vector>
 #include "personaje.h"
 #include "mapa.h"
 #include "juego.h"
@@ -98,7 +99,15 @@ int main() {
         mapa.agregarPersonaje(soldados_ejercito2[j]);
     }
 
-    mapa.mostrarCasillas();
+    // mapa.mostrarCasillas();
+
+    std::vector<std::vector<Personaje*>> casillas = mapa.getCasillas();
+    for (int i = 0; i < ancho; i++) {
+        for (int j = 0; j < alto; j++) {
+            cout << casillas[i][j] << endl;
+        }
+    }
+
 
     Juego juego;
     juego.calcularPromedios(soldados_ejercito1, &cantidad_de_soldados1);
