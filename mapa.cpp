@@ -44,24 +44,34 @@ void Mapa::eliminarPersonaje(Personaje* personaje) {
 }
 
 void Mapa::mostrarCasillas() {
-
-    // CAMBIAR ESTO EN BASE AL ANCHO DEL TABLERO Y NO ALGO GENERICO
-    // std::cout << "------------------------------------------------------" << std::endl;
+    std::cout << " ";
+    for (int i = 0; i < ancho; i++) {
+        std::cout << "--------";
+    }
+    std::cout << std::endl;
 
     for (int j = 0; j < alto; j++) {
         for (int i = 0; i < ancho; i++) {
+            std::cout << "| ";
             if (casillas[i][j] != nullptr) {
-                // POR AHORA ESTA SOLO CON LA PRIMERA LETRA DEL NOMBRE
-                std::cout << "| " << casillas[i][j]->getNombre()[0] << " "; 
+                std::string nombre = casillas[i][j]->getNombre();
+                int espacios = 6 - nombre.length();
+                int espacios_izq = espacios / 2;
+                int espacios_der = espacios - espacios_izq;
+
+                std::cout << std::setw(espacios_izq) << "" << nombre << std::setw(espacios_der) << " ";
             } else {
-                std::cout << "|  "; 
+                std::cout << std::setw(6) << " ";
             }
         }
-        std::cout << "|  " << std::endl;
+        std::cout << "|" << std::endl;
+
+        std::cout << " ";
+        for (int i = 0; i < ancho; i++) {
+            std::cout << "--------";
+        }
+        std::cout << std::endl;
     }
-    
-    // // CAMBIAR ESTO EN BASE AL ANCHO DEL TABLERO Y NO ALGO GENERICO
-    std::cout << "------------------------------------------------------" << std::endl;
 }
 
 std::vector<std::vector<Personaje*>> Mapa::getCasillas() {
