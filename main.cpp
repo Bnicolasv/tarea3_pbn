@@ -5,6 +5,7 @@
 #include <fstream>
 #include "personaje.h"
 #include "mapa.h"
+#include "juego.h"
 
 using namespace std;
 
@@ -85,17 +86,23 @@ int main() {
     archivo.close();
 
 
-
+    // ==========================================================================================================
 
     Mapa mapa(alto, ancho);
+
     for (int i = 0; i < cantidad_de_soldados1; i++) {
         mapa.agregarPersonaje(soldados_ejercito1[i]);
     }
 
+    for (int j = 0; j < cantidad_de_soldados2; j++) {
+        mapa.agregarPersonaje(soldados_ejercito2[j]);
+    }
+
     mapa.mostrarCasillas();
 
-
-
+    Juego juego;
+    juego.calcularPromedios(soldados_ejercito1, &cantidad_de_soldados1);
+    juego.calcularPromedios(soldados_ejercito2, &cantidad_de_soldados2);
 
 
     for (int i = 0; i < cantidad_de_soldados1; i++) {
@@ -106,6 +113,7 @@ int main() {
         delete soldados_ejercito2[i];
     }
     
+
     return 0;
 }
 

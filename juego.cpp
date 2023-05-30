@@ -5,6 +5,21 @@
 #include "posicion.h"
 #include "mapa.h"
 
+float Juego::calcularPromedios(Personaje* personajes[], int* cantidad_de_soldados) {
+    int suma_velocidades_ejercito = 0;
+    float promedio_velocidad_ejercito = 0;
+
+    for (int i = 0; i < *cantidad_de_soldados; i++) {
+        suma_velocidades_ejercito += personajes[i]->getVelocidad();  
+    }
+
+    promedio_velocidad_ejercito = static_cast<float>(suma_velocidades_ejercito) / static_cast<int>(*cantidad_de_soldados);    
+    std::cout << "El promedio de velocidades del ejercito es : " << promedio_velocidad_ejercito << std::endl;
+}
+
+
+
+
 void Juego::jugar() {
 
 }
@@ -23,7 +38,7 @@ void Juego::chequearGanador() {
 */
 
 int Juego::calcularTurno() {
-
+    
 }
 
 
