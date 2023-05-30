@@ -3,6 +3,7 @@
 #include <cstring>
 #include <sstream>
 #include <fstream>
+#include <vector>
 #include "personaje.h"
 #include "mapa.h"
 #include "juego.h"
@@ -99,6 +100,7 @@ int main() {
     }
 
     mapa.mostrarCasillas();
+
 
     Juego juego;
     juego.calcularPromedios(soldados_ejercito1, &cantidad_de_soldados1);
