@@ -2,6 +2,9 @@
 #include <iostream>
 #include "posicion.h"
 
+#ifndef PERSONAJE
+#define PERSONAJE
+
 class Personaje {
     public:
         Personaje(std::string nombre, int vida, int fuerza, int velocidad, Posicion pos, int ejercito);
@@ -22,3 +25,5 @@ class Personaje {
         int vida, fuerza, velocidad, ejercito;
         Posicion* pos;
 };
+
+#endif

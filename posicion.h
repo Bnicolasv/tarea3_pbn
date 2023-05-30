@@ -1,5 +1,8 @@
 #include <iostream>
 
+#ifndef POSICION
+#define POSICION
+
 class Posicion {
     public:
         Posicion(int x, int y);
@@ -12,3 +15,5 @@ class Posicion {
     private:
         int x, y;
 };
+
+#endif

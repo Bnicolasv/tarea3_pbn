@@ -4,6 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include "personaje.h"
+#include "mapa.h"
 
 using namespace std;
 
@@ -32,17 +33,15 @@ int main() {
 
     Personaje *soldados_ejercito1[cantidad_de_soldados1];
 
-    cout << "SOLDADOS EJERCITO 1" << endl;
     for (int i = 0; i < cantidad_de_soldados1; i++) {
         getline(archivo, linea);
         stringstream soldado1(linea);
         string nombre;
         int vida, fuerza, velocidad, pos_x, pos_y;
 
-        // Utilizamos getline con delimitador ',' en lugar de espacio
         getline(soldado1, nombre, ',');
         soldado1 >> vida;
-        soldado1.ignore(); // Ignoramos la coma
+        soldado1.ignore();
         soldado1 >> fuerza;
         soldado1.ignore();
         soldado1 >> velocidad;
@@ -52,11 +51,7 @@ int main() {
         soldado1 >> pos_y;
 
         Posicion pos = Posicion(pos_x, pos_y);
-
         soldados_ejercito1[i] = new Personaje(nombre, vida, fuerza, velocidad, pos, 1);
-
-        // cout << soldados_ejercito1[i] << endl;
-        cout << soldados_ejercito1[i]->getEjercito() << endl;
     }
 
     getline(archivo, linea);
@@ -66,7 +61,6 @@ int main() {
 
     Personaje *soldados_ejercito2[cantidad_de_soldados2];
 
-    cout << "SOLDADOS EJERCITO 2" << endl;
     for (int i = 0; i < cantidad_de_soldados2; i++) {
         getline(archivo, linea);
         stringstream soldado2(linea);
@@ -85,14 +79,24 @@ int main() {
         soldado2 >> pos_y;
 
         Posicion pos = Posicion(pos_x, pos_y);
-
         soldados_ejercito2[i] = new Personaje(nombre, vida, fuerza, velocidad, pos, 2);
-
-        // cout << soldados_ejercito2[i] << endl;  
-        cout << soldados_ejercito2[i]->getEjercito() << endl;      
     }
 
     archivo.close();
+
+
+
+
+    Mapa mapa(alto, ancho);
+    for (int i = 0; i < cantidad_de_soldados1; i++) {
+        mapa.agregarPersonaje(soldados_ejercito1[i]);
+    }
+
+    mapa.mostrarCasillas();
+
+
+
+
 
     for (int i = 0; i < cantidad_de_soldados1; i++) {
         delete soldados_ejercito1[i];
