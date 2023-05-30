@@ -94,13 +94,12 @@ int main() {
         mapa.agregarPersonaje(soldados_ejercito1[i]);
     }
 
-    for (int i = 0; i < cantidad_de_soldados2; i++) {
-        mapa.agregarPersonaje(soldados_ejercito2[i]);
+    for (int j = 0; j < cantidad_de_soldados2; j++) {
+        mapa.agregarPersonaje(soldados_ejercito2[j]);
     }
 
     mapa.mostrarCasillas();
 
-    // Calcula por ahora el promedio de velocidades de cada ejercito
     Juego juego;
     juego.calcularPromedios(soldados_ejercito1, &cantidad_de_soldados1);
     juego.calcularPromedios(soldados_ejercito2, &cantidad_de_soldados2);

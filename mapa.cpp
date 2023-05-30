@@ -39,32 +39,44 @@ int Mapa::casillaCentralY() {
 void Mapa::agregarPersonaje(Personaje* personaje) {
     int pos_x = personaje->getPosicion().getX();
     int pos_y = personaje->getPosicion().getY();
+    // HACIENDOLO DE LA SIGUIENTE MANERA SE AGREGAN TODOS AL TABLERO, PERO ARROJA CORE DUMPED EN CONSOLA
+    casillas[pos_x][pos_y] = personaje;
+    std::cout << "Se ha agregado " << personaje->getNombre() << " a la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
 
-    if (casillas[pos_x][pos_y] == nullptr) {
-        casillas[pos_x][pos_y] = personaje;
-        std::cout << "Se ha agregado " << personaje->getNombre() << " a la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
-    }
+
+
+    // NO SE AGREGAN TODOS LOS SOLDADOS SI SE COMPRUEBA PREVIAMENTE SI LA CASILLA ES UN NULLPTR
+    // if (casillas[pos_x][pos_y] == nullptr) {
+    //     casillas[pos_x][pos_y] = personaje;
+    //     std::cout << "Se ha agregado " << personaje->getNombre() << " a la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
+    // }
 }
 
 void Mapa::eliminarPersonaje(Personaje* personaje) {
     int pos_x = personaje->getPosicion().getX();
     int pos_y = personaje->getPosicion().getY();
-
-    if (casillas[pos_x][pos_y] != nullptr) {
-        casillas[pos_x][pos_y] = nullptr;
-        std::cout << "Se ha eliminado " << personaje->getNombre() << " de la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
-    }
+    casillas[pos_x][pos_y] = nullptr;
+    // personaje->getPosicion().set(std::nullptr, std::nullptr);
+    std::cout << "Se ha eliminado " << personaje->getNombre() << " de la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
 }
 
 void Mapa::mostrarCasillas() {
 
+    // CAMBIAR ESTO EN BASE AL ANCHO DEL TABLERO Y NO ALGO GENERICO
     std::cout << "------------------------------------------------------" << std::endl;
-    for (int i = 0; i < ancho; i++) {
-        for (int j = 0; j < alto; j++) {
+
+    for (int j = 0; j < alto; j++) {
+        for (int i = 0; i < ancho; i++) {
             if (casillas[i][j] != nullptr) {
-                std::cout << casillas[i][j]->getNombre() << " esta en la posicion " << i << "," << j << std::endl;
+                // POR AHORA ESTA SOLO CON LA PRIMERA LETRA DEL NOMBRE
+                std::cout << "| " << casillas[i][j]->getNombre()[0] << " "; 
+            } else {
+                std::cout << "|  "; 
             }
         }
+        std::cout << "|  " << std::endl;
     }
-
+    
+    // // CAMBIAR ESTO EN BASE AL ANCHO DEL TABLERO Y NO ALGO GENERICO
+    std::cout << "------------------------------------------------------" << std::endl;
 }
