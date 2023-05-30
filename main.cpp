@@ -99,14 +99,7 @@ int main() {
         mapa.agregarPersonaje(soldados_ejercito2[j]);
     }
 
-    // mapa.mostrarCasillas();
-
-    std::vector<std::vector<Personaje*>> casillas = mapa.getCasillas();
-    for (int i = 0; i < ancho; i++) {
-        for (int j = 0; j < alto; j++) {
-            cout << casillas[i][j] << endl;
-        }
-    }
+    mapa.mostrarCasillas();
 
 
     Juego juego;
