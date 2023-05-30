@@ -35,35 +35,35 @@ int Mapa::casillaCentralY() {
     return alto / 2;
 } 
 
-
 void Mapa::agregarPersonaje(Personaje* personaje) {
     int pos_x = personaje->getPosicion().getX();
     int pos_y = personaje->getPosicion().getY();
+    // std::cout << pos_x << "," << pos_y << std::endl;
     // HACIENDOLO DE LA SIGUIENTE MANERA SE AGREGAN TODOS AL TABLERO, PERO ARROJA CORE DUMPED EN CONSOLA
-    casillas[pos_x][pos_y] = personaje;
-    std::cout << "Se ha agregado " << personaje->getNombre() << " a la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
-
-
+    // casillas[pos_x][pos_y] = personaje;
+    // std::cout << "Se ha agregado " << personaje->getNombre() << " a la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
 
     // NO SE AGREGAN TODOS LOS SOLDADOS SI SE COMPRUEBA PREVIAMENTE SI LA CASILLA ES UN NULLPTR
-    // if (casillas[pos_x][pos_y] == nullptr) {
-    //     casillas[pos_x][pos_y] = personaje;
-    //     std::cout << "Se ha agregado " << personaje->getNombre() << " a la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
-    // }
+    if (casillas[pos_x][pos_y] == nullptr) {
+        casillas[pos_x][pos_y] = personaje;
+        std::cout << "Se ha agregado " << personaje->getNombre() << " a la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
+    }
 }
 
 void Mapa::eliminarPersonaje(Personaje* personaje) {
     int pos_x = personaje->getPosicion().getX();
     int pos_y = personaje->getPosicion().getY();
-    casillas[pos_x][pos_y] = nullptr;
-    // personaje->getPosicion().set(std::nullptr, std::nullptr);
-    std::cout << "Se ha eliminado " << personaje->getNombre() << " de la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
+
+    if (casillas[pos_x][pos_y] != nullptr) {
+        casillas[pos_x][pos_y] = nullptr;
+        std::cout << "Se ha eliminado " << personaje->getNombre() << " en la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
+    }
 }
 
 void Mapa::mostrarCasillas() {
 
     // CAMBIAR ESTO EN BASE AL ANCHO DEL TABLERO Y NO ALGO GENERICO
-    std::cout << "------------------------------------------------------" << std::endl;
+    // std::cout << "------------------------------------------------------" << std::endl;
 
     for (int j = 0; j < alto; j++) {
         for (int i = 0; i < ancho; i++) {
