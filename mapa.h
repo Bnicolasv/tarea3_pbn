@@ -17,5 +17,5 @@ class Mapa {
 
     private:
         int ancho, alto;
-        std::vector<std::vector<Personaje*>> casillas;
+        std::vector<std::vector<Personaje*> > casillas;
 };
