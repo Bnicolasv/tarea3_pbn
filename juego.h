@@ -3,8 +3,9 @@
 #include "posicion.h"
 #include "personaje.h"
 
-class Juego{
+class Juego {
     public:
+        float calcularPromedios(Personaje* personajes[], int* cantidad_de_soldados);
         void jugar();
         void chequearGanador();
         int calcularTurno();

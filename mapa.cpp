@@ -57,22 +57,14 @@ void Mapa::eliminarPersonaje(Personaje* personaje) {
 }
 
 void Mapa::mostrarCasillas() {
-    int espacio = 5; 
-    int anchoLinea = (espacio + 1) * ancho + 1; 
 
-    std::cout << "+" << std::string(anchoLinea, '-') << "+" << std::endl;
-
-    for (int y = 0; y < alto; y++) {
-        std::cout << " |";
-        for (int x = 0; x < ancho; x++) {
-            if (casillas[x][y] == nullptr) {
-                std::cout << std::setfill(' ') << std::setw(espacio) << " " << "|"; // Casilla vacía
-            } else {
-                std::cout << std::setfill(' ') << std::setw(espacio) << casillas[x][y]->getNombre() << "|"; // Casilla ocupada por un personaje
+    std::cout << "------------------------------------------------------" << std::endl;
+    for (int i = 0; i < ancho; i++) {
+        for (int j = 0; j < alto; j++) {
+            if (casillas[i][j] != nullptr) {
+                std::cout << casillas[i][j]->getNombre() << " esta en la posicion " << i << "," << j << std::endl;
             }
         }
-        std::cout << std::endl;
-
-        std::cout << "+" << std::string(anchoLinea, '-') << "+" << std::endl;
     }
+
 }
