@@ -4,3 +4,5 @@ mapa.o
 personaje.o
 posicion.o
 /.vscode
+.DS_Store
+tarea_3
