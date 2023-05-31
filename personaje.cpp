@@ -52,8 +52,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
     int pos_ancho = pos->getX();
     int pos_alto = pos->getY();
     
-    int ancho = mapa.getAncho();
-    int alto = mapa.getAlto();
     int casilla_central_ancho = mapa.casillaCentralX(); 
     int casilla_central_alto = mapa.casillaCentralY();
     int ejercito = this->ejercito;
@@ -358,5 +356,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                 }
                 }
             }
-        }    
+        } 
+
+    return *pos;   
 }

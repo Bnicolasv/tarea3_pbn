@@ -1,5 +1,5 @@
 CC=g++
-flags=#-Wundef -Werror -Wall -Wextra -Wuninitialized -Winit-self
+flags=-Wundef -Werror -Wall -Wextra -Wuninitialized -Winit-self
 exec=tarea_3
 
 $(exec): main.o mapa.o personaje.o posicion.o juego.o
