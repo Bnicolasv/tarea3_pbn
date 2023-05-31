@@ -8,7 +8,7 @@
 Mapa::Mapa(int ancho, int alto) {
     this -> ancho = ancho;
     this -> alto = alto;
-    casillas.resize(ancho, std::vector<Personaje*>(alto, nullptr));
+    casillas.resize(alto, std::vector<Personaje*>(ancho, nullptr));
 }
 
 
@@ -21,19 +21,19 @@ int Mapa::casillaCentralY() {
     return alto / 2;
 } 
 
-int Mapa::getAncho() {
+int Mapa::getAncho() const{
     return ancho;
 }
 
-int Mapa::getAlto() {
+int Mapa::getAlto() const{
     return alto;
 }
 
 void Mapa::agregarPersonaje(Personaje* personaje) {
     int pos_x = personaje->getPosicion().getX();
     int pos_y = personaje->getPosicion().getY();
-    if (casillas[pos_y][pos_x] == nullptr) {
-        casillas[pos_y][pos_x] = personaje;
+    if (casillas[pos_x][pos_y] == nullptr) {
+        casillas[pos_x][pos_y] = personaje;
         std::cout << "Se ha agregado " << personaje->getNombre() << " a la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
     }
 }
@@ -42,8 +42,8 @@ void Mapa::eliminarPersonaje(Personaje* personaje) {
     int pos_x = personaje->getPosicion().getX();
     int pos_y = personaje->getPosicion().getY();
 
-    if (casillas[pos_y][pos_x] != nullptr) {
-        casillas[pos_y][pos_x] = nullptr;
+    if (casillas[pos_x][pos_y] != nullptr) {
+        casillas[pos_x][pos_y] = nullptr;
         std::cout << "Se ha eliminado " << personaje->getNombre() << " en la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
     }
 }
@@ -51,12 +51,12 @@ void Mapa::eliminarPersonaje(Personaje* personaje) {
 void Mapa::mostrarCasillas() {
     std::cout << " ";
     for (int i = 0; i < ancho; i++) {
-        std::cout << "--------";
+        std::cout << "-----";
     }
     std::cout << std::endl;
 
-    for (int j = 0; j < alto; j++) {
-        for (int i = 0; i < ancho; i++) {
+    for (int j = 0; j < ancho; j++) {
+        for (int i = 0; i < alto; i++) {
             std::cout << "| ";
             if (casillas[i][j] != nullptr) {
                 std::string nombre = casillas[i][j]->getNombre();
@@ -73,7 +73,7 @@ void Mapa::mostrarCasillas() {
 
         std::cout << " ";
         for (int i = 0; i < ancho; i++) {
-            std::cout << "--------";
+            std::cout << "-----";
         }
         std::cout << std::endl;
     }

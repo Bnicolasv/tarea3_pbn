@@ -44,41 +44,31 @@ void Personaje::recibirAtaque(Personaje* enemigo) {
     vida -= enemigo -> ataque();
 }
 
-Posicion Personaje::moverse(Mapa mapa) {
-    Posicion posicionInicial = *pos;
-    int posicionInicialX = pos->getX();
-    int posicionInicialY = pos->getY();
-    int ancho = mapa.getAncho();
-    int alto = mapa.getAlto();
-    std::vector<std::vector<Personaje*> > casillas = mapa.getCasillas();
+// Posicion Personaje::moverse(Mapa mapa) {
+//     Posicion posicionInicial = *pos;
+
+//     int posicionInicialX = pos->getX();
+//     int posicionInicialY = pos->getY();
+    
+//     int ancho = mapa.getAncho();
+//     int alto = mapa.getAlto();
+    
+//     std::vector<std::vector<Personaje*> > casillas = mapa.getCasillas();
+
+    // Primer cuadrante (arriba a la derecha del centro)
+
+
+
+
+
+
+
+
+
+
 
  
-    if(posicionInicialX - ancho/2 < 0 && posicionInicialY - alto/2 < 0){
-        if (casillas[posicionInicialY + 1][posicionInicialX + 1] == nullptr){
-            Personaje.getPosicion().set(posicionInicialX + 1, posicionInicialY + 1)
-            return Personaje.getPosicion();
-        }
-        else if(casillas[posicionInicialY + 1][posicionInicialX + 1] != nullptr){
-            if(casillas[posicionInicialY + 1][posicionInicialX + 1].getEjercito() == Personaje.getEjercito()){
-                if(casillas[posicionInicialY + 1][posicionInicialX] == nullptr){
-                    Personaje.getPosicion().set(posicionInicialX, posicionInicialY + 1);
-                    return Personaje.getPosicion();
-                } 
-                else if(casillas[posicionInicialY + 1][posicionInicialX] != nullptr && casillas[posicionInicialY + 1][posicionInicialX].getEjercito() != Personaje.getEjercito()){
-                    juego.combate(Personaje, casillas[posicionInicialY + 1][posicionInicialX]);
-                    if(Personaje.getVida() > 0){
-                        Personaje.getPosicion().set(posicionInicialX, posicionInicialY+1);
-                        return Personaje.getPosicion();
-                    }
-                    else {~Personaje()
-                    }
-                }
-                else if(Perso)
-            }
-        }
-    }
-}   
-    
+// }   
     
 
 
