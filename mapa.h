@@ -14,6 +14,8 @@ class Mapa {
         void eliminarPersonaje(Personaje* personaje);
         void mostrarCasillas(); 
         std::vector<std::vector<Personaje*>> getCasillas();
+        int getAncho();
+        int getAlto();
 
     private:
         int ancho, alto;
