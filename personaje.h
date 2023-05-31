@@ -11,7 +11,7 @@ class Personaje {
         ~Personaje();
         Personaje();
 
-        Posicion moverse();
+        Posicion moverse(Mapa mapa);
         void recibirAtaque(Personaje* enemigo);
         std::string getNombre() const;
         int getVida() const;
