@@ -113,265 +113,250 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
         }
     }
     
+    // Segundo cuadrante (arriba a la izquierda del centro) -> ((pos_ancho - casilla_central_ancho < 0) && (pos_alto - casilla_central_alto < 0))
+    else if ((pos_ancho - casilla_central_ancho < 0) && (pos_alto - casilla_central_alto < 0)) {
+        if ((pos_ancho + 1 != casilla_central_ancho) && (pos_alto + 1 != casilla_central_alto)) {
+            if (casillas[pos_ancho + 1][pos_alto + 1] == nullptr) {
+            pos -> set(pos_ancho + 1, pos_alto + 1);
+            return* pos;
+            }
 
+            else if (casillas[pos_ancho + 1][pos_alto + 1] != nullptr) {
+                if (casillas[pos_ancho + 1][pos_alto + 1]->getEjercito() != ejercito) {
+                    juego.combate(casillas[pos_ancho + 1][pos_alto + 1], this); // El combate actualizara this -> vida
+                    if (vida > 0) {
+                        pos -> set(pos_ancho + 1, pos_alto + 1);
+                        return* pos;
+                    }
+                    else {
+                        delete this;
+                    }
+                }
+                else if (casillas[pos_ancho + 1][pos_alto + 1]->getEjercito() == ejercito) {
+                    if (pos_alto != casilla_central_alto) {
+                        if (casillas[pos_ancho][pos_alto + 1] == nullptr) {
+                            pos -> set(pos_ancho, pos_alto + 1);
+                            return* pos;
+                        }
+                        else if (casillas[pos_ancho][pos_alto + 1] != nullptr) {
+                            if (casillas[pos_ancho][pos_alto + 1]->getEjercito() != ejercito) {
+                                juego.combate(casillas[pos_ancho][pos_alto + 1], this); // El combate actualizara this -> vida
+                                if (vida > 0) {
+                                    pos -> set(pos_ancho, pos_alto + 1);
+                                    return* pos;
+                                }
+                                else {
+                                    delete this;
+                                }
+                            }
+                            else if (casillas[pos_ancho][pos_alto + 1]->getEjercito() == ejercito) {
+                                return *pos;
+                            }
+                        }
+                    }
+                    else {
+                        return *pos;
+                    }
+                    }
+                }
+            }
+        }
 
+    // Tercer cuadrante (izquierda abajo del centro) -> ((pos_ancho - casilla_central_ancho < 0) && (pos_alto - casilla_central_alto > 0))
+    else if ((pos_ancho - casilla_central_ancho < 0) && (pos_alto - casilla_central_alto > 0)) {
+        if ((pos_ancho + 1 != casilla_central_ancho) && (pos_alto - 1 != casilla_central_alto)) {
+            if (casillas[pos_ancho + 1][pos_alto - 1] == nullptr) {
+                pos -> set(pos_ancho + 1, pos_alto - 1);
+                return* pos;
+            }
 
+            else if (casillas[pos_ancho + 1][pos_alto - 1] != nullptr) {
+                if (casillas[pos_ancho + 1][pos_alto - 1]->getEjercito() != ejercito) {
+                    juego.combate(casillas[pos_ancho + 1][pos_alto - 1], this); // El combate actualizara this -> vida
+                    if (vida > 0) {
+                        pos -> set(pos_ancho + 1, pos_alto - 1);
+                        return* pos;
+                    }
+                    else {
+                        delete this;
+                    }
+                }
+                else if (casillas[pos_ancho + 1][pos_alto - 1]->getEjercito() == ejercito) {
+                    if (pos_alto != casilla_central_alto) {
+                        if (casillas[pos_ancho][pos_alto - 1] == nullptr) {
+                            pos -> set(pos_ancho, pos_alto - 1);
+                            return* pos;
+                        }
+                        else if (casillas[pos_ancho][pos_alto - 1] != nullptr) {
+                            if (casillas[pos_ancho][pos_alto - 1]->getEjercito() != ejercito) {
+                                juego.combate(casillas[pos_ancho][pos_alto + 1], this); // El combate actualizara this -> vida
+                                if (vida > 0) {
+                                    pos -> set(pos_ancho, pos_alto - 1);
+                                    return* pos;
+                                }
+                                else {
+                                    delete this;
+                                }
+                            }
+                            else if (casillas[pos_ancho][pos_alto - 1]->getEjercito() == ejercito) {
+                                return *pos;
+                            }
+                        }
+                    }
+                    else {
+                        return *pos;
+                    }
+                    }
+                }
+            }
+        }
+        
+    // Cuarto cuadrante (abajo a la derecha del centro) -> ((pos_ancho - casilla_central_ancho > 0) && (pos_alto - casilla_central_alto > 0))
+    else if ((pos_ancho - casilla_central_ancho > 0) && (pos_alto - casilla_central_alto > 0)) {
+        if ((pos_ancho - 1 != casilla_central_ancho) && (pos_alto - 1 != casilla_central_alto)) {
+            if (casillas[pos_ancho - 1][pos_alto - 1] == nullptr) {
+                pos -> set(pos_ancho - 1, pos_alto - 1);
+                return* pos;
+            }
 
-//     // Segundo cuadrante (arriba a la izquierda del centro) -> ((pos_ancho - casilla_central_ancho < 0) && (pos_alto - casilla_central_alto < 0))
-//     else if ((pos_ancho - casilla_central_ancho < 0) && (pos_alto - casilla_central_alto < 0)) {
-//         if ((pos_ancho + 1 != casilla_central_ancho) && (pos_alto + 1 != casilla_central_alto)) {
-//             if (casillas[pos_ancho + 1][pos_alto + 1] == nullptr) {
-//             pos -> set(pos_ancho + 1, pos_alto + 1);
-//             return* pos;
-//             }
+            else if (casillas[pos_ancho - 1][pos_alto - 1] != nullptr) {
+                if (casillas[pos_ancho - 1][pos_alto - 1]->getEjercito() != ejercito) {
+                    juego.combate(casillas[pos_ancho - 1][pos_alto - 1], this); // El combate actualizara this -> vida
+                    if (vida > 0) {
+                        pos -> set(pos_ancho - 1, pos_alto - 1);
+                        return* pos;
+                    }
+                    else {
+                        delete this;
+                    }
+                }
+                else if (casillas[pos_ancho - 1][pos_alto - 1]->getEjercito() == ejercito) {
+                    if (pos_alto != casilla_central_alto) {
+                        if (casillas[pos_ancho][pos_alto - 1] == nullptr) {
+                            pos -> set(pos_ancho, pos_alto - 1);
+                            return* pos;
+                        }
+                        else if (casillas[pos_ancho][pos_alto - 1] != nullptr) {
+                            if (casillas[pos_ancho][pos_alto - 1]->getEjercito() != ejercito) {
+                                juego.combate(casillas[pos_ancho][pos_alto - 1], this); // El combate actualizara this -> vida
+                                if (vida > 0) {
+                                    pos -> set(pos_ancho, pos_alto - 1);
+                                    return* pos;
+                                }
+                                else {
+                                    delete this;
+                                }
+                            }
+                            else if (casillas[pos_ancho][pos_alto - 1]->getEjercito() == ejercito) {
+                                return *pos;
+                            }
+                        }
+                    }
+                    else {
+                        return *pos;
+                    }
+                    }
+                }
+            }
+        }
+        
+    // Pseudo quinto cuadrante (pos_ancho == casilla_central_ancho && pos_alto < casilla_central_alto)
+    else if (pos_ancho == casilla_central_ancho && pos_alto < casilla_central_alto) {
+        if (pos_alto - 1 != casilla_central_alto) {
+            if (casillas[pos_ancho][pos_alto + 1] == nullptr) {
+                pos -> set(pos_ancho, pos_alto + 1);
+                return* pos;
+            }
+            else if (casillas[pos_ancho][pos_alto + 1] != nullptr) {
+                if (casillas[pos_ancho][pos_alto + 1]->getEjercito() != ejercito) {
+                    juego.combate(casillas[pos_ancho][pos_alto + 1], this); 
+                    if (vida > 0) {
+                        pos -> set(pos_ancho, pos_alto + 1);
+                        return* pos;
+                    }
+                    else {
+                        delete this;
+                    }
+                }
+                else if (casillas[pos_ancho][pos_alto + 1]->getEjercito() == ejercito) {
+                    return *pos;
+                }
+                }
+            }
+        }
+    
+    // Pseudo sexto cuadrante (pos_ancho < casilla_central_ancho && pos_alto == casilla_central_alto)
+    else if (pos_ancho < casilla_central_ancho && pos_alto == casilla_central_alto) {
+        if (pos_ancho + 1 != casilla_central_ancho) {
+            if (casillas[pos_ancho + 1][pos_alto] == nullptr) {
+                pos -> set(pos_ancho + 1, pos_alto);
+                return* pos;
+            }
+            else if (casillas[pos_ancho + 1][pos_alto] != nullptr) {
+                if (casillas[pos_ancho + 1][pos_alto]->getEjercito() != ejercito) {
+                    juego.combate(casillas[pos_ancho + 1][pos_alto], this); 
+                    if (vida > 0) {
+                        pos -> set(pos_ancho + 1, pos_alto);
+                        return* pos;
+                    }
+                    else {
+                        delete this;
+                    }
+                }
+                else if (casillas[pos_ancho + 1][pos_alto]->getEjercito() == ejercito) {
+                    return *pos;
+                }
+                }
+            }
+        }
 
-//             else if (casillas[pos_ancho + 1][pos_alto + 1] != nullptr) {
-//                 if (casillas[pos_ancho + 1][pos_alto + 1]->getEjercito() != ejercito) {
-//                     juego.combate(casillas[pos_ancho + 1][pos_alto + 1], this); // El combate actualizara this -> vida
-//                     if (vida > 0) {
-//                         pos -> set(pos_ancho + 1, pos_alto + 1);
-//                         return* pos;
-//                     }
-//                     else {
-//                         delete this;
-//                     }
-//                 }
-//                 else if (casillas[pos_ancho + 1][pos_alto + 1]->getEjercito() == ejercito) {
-//                     if (pos_alto != casilla_central_alto) {
-//                         if (casillas[pos_ancho][pos_alto + 1] == nullptr) {
-//                             pos -> set(pos_ancho, pos_alto + 1);
-//                             return* pos;
-//                         }
-//                         else if (casillas[pos_ancho][pos_alto + 1] != nullptr) {
-//                             if (casillas[pos_ancho][pos_alto + 1]->getEjercito() != ejercito) {
-//                                 juego.combate(casillas[pos_ancho][pos_alto + 1], this); // El combate actualizara this -> vida
-//                                 if (vida > 0) {
-//                                     pos -> set(pos_ancho, pos_alto + 1);
-//                                     return* pos;
-//                                 }
-//                                 else {
-//                                     delete this;
-//                                 }
-//                             }
-//                             else if (casillas[pos_ancho][pos_alto + 1]->getEjercito() == ejercito) {
-//                                 return *pos;
-//                             }
-//                         }
-//                     }
-//                     else {
-//                         return *pos;
-//                     }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-
-
-//     // Tercer cuadrante (izquierda abajo del centro) -> ((pos_ancho - casilla_central_ancho < 0) && (pos_alto - casilla_central_alto > 0))
-//     else if ((pos_ancho - casilla_central_ancho < 0) && (pos_alto - casilla_central_alto > 0)) {
-//         if ((pos_ancho + 1 != casilla_central_ancho) && (pos_alto - 1 != casilla_central_alto)) {
-//             if (casillas[pos_ancho + 1][pos_alto - 1] == nullptr) {
-//                 pos -> set(pos_ancho + 1, pos_alto - 1);
-//                 return* pos;
-//             }
-
-//             else if (casillas[pos_ancho + 1][pos_alto - 1] != nullptr) {
-//                 if (casillas[pos_ancho + 1][pos_alto - 1]->getEjercito() != ejercito) {
-//                     juego.combate(casillas[pos_ancho + 1][pos_alto - 1], this); // El combate actualizara this -> vida
-//                     if (vida > 0) {
-//                         pos -> set(pos_ancho + 1, pos_alto - 1);
-//                         return* pos;
-//                     }
-//                     else {
-//                         delete this;
-//                     }
-//                 }
-//                 else if (casillas[pos_ancho + 1][pos_alto - 1]->getEjercito() == ejercito) {
-//                     if (pos_alto != casilla_central_alto) {
-//                         if (casillas[pos_ancho][pos_alto - 1] == nullptr) {
-//                             pos -> set(pos_ancho, pos_alto - 1);
-//                             return* pos;
-//                         }
-//                         else if (casillas[pos_ancho][pos_alto - 1] != nullptr) {
-//                             if (casillas[pos_ancho][pos_alto - 1]->getEjercito() != ejercito) {
-//                                 juego.combate(casillas[pos_ancho][pos_alto + 1], this); // El combate actualizara this -> vida
-//                                 if (vida > 0) {
-//                                     pos -> set(pos_ancho, pos_alto - 1);
-//                                     return* pos;
-//                                 }
-//                                 else {
-//                                     delete this;
-//                                 }
-//                             }
-//                             else if (casillas[pos_ancho][pos_alto - 1]->getEjercito() == ejercito) {
-//                                 return *pos;
-//                             }
-//                         }
-//                     }
-//                     else {
-//                         return *pos;
-//                     }
-//                     }
-//                 }
-//             }
-//         }
-//         }
-
-
-
-//     // Cuarto cuadrante (abajo a la derecha del centro) -> ((pos_ancho - casilla_central_ancho > 0) && (pos_alto - casilla_central_alto > 0))
-//     else if ((pos_ancho - casilla_central_ancho > 0) && (pos_alto - casilla_central_alto > 0)) {
-//         if ((pos_ancho - 1 != casilla_central_ancho) && (pos_alto - 1 != casilla_central_alto)) {
-//             if (casillas[pos_ancho - 1][pos_alto - 1] == nullptr) {
-//                 pos -> set(pos_ancho - 1, pos_alto - 1);
-//                 return* pos;
-//             }
-
-//             else if (casillas[pos_ancho - 1][pos_alto - 1] != nullptr) {
-//                 if (casillas[pos_ancho - 1][pos_alto - 1]->getEjercito() != ejercito) {
-//                     juego.combate(casillas[pos_ancho - 1][pos_alto - 1], this); // El combate actualizara this -> vida
-//                     if (vida > 0) {
-//                         pos -> set(pos_ancho - 1, pos_alto - 1);
-//                         return* pos;
-//                     }
-//                     else {
-//                         delete this;
-//                     }
-
-//                 else if (casillas[pos_ancho - 1][pos_alto - 1]->getEjercito() == ejercito) {
-//                     if (pos_alto != casilla_central_alto) {
-//                         if (casillas[pos_ancho][pos_alto - 1] == nullptr) {
-//                             pos -> set(pos_ancho, pos_alto - 1);
-//                             return* pos;
-//                         }
-//                         else if (casillas[pos_ancho][pos_alto - 1] != nullptr) {
-//                             if (casillas[pos_ancho][pos_alto - 1]->getEjercito() != ejercito) {
-//                                 juego.combate(casillas[pos_ancho][pos_alto - 1], this); // El combate actualizara this -> vida
-//                                 if (vida > 0) {
-//                                     pos -> set(pos_ancho, pos_alto - 1);
-//                                     return* pos;
-//                                 }
-//                                 else {
-//                                     delete this;
-//                                 }
-//                             }
-//                             else if (casillas[pos_ancho][pos_alto - 1]->getEjercito() == ejercito) {
-//                                 return *pos;
-//                             }
-//                         }
-//                     }
-//                     else {
-//                         return *pos;
-//                     }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-
-
-//     // Pseudo quinto cuadrante (pos_ancho == casilla_central_ancho && pos_alto < casilla_central_alto)
-//     else if (pos_ancho == casilla_central_ancho && pos_alto < casilla_central_alto) {
-//         if (pos_alto - 1 != casilla_central_alto) {
-//             if (casillas[pos_ancho][pos_alto + 1] == nullptr) {
-//                 pos -> set(pos_ancho, pos_alto + 1);
-//                 return* pos;
-//             }
-//             else if (casillas[pos_ancho][pos_alto + 1] != nullptr) {
-//                 if (casillas[pos_ancho][pos_alto + 1]->getEjercito() != ejercito) {
-//                     juego.combate(casillas[pos_ancho][pos_alto + 1], this); 
-//                     if (vida > 0) {
-//                         pos -> set(pos_ancho, pos_alto + 1);
-//                         return* pos;
-//                     }
-//                     else {
-//                         delete this;
-//                     }
-//                 else if (casillas[pos_ancho][pos_alto + 1]->getEjercito() == ejercito) {
-//                     return *pos;
-//                 }
-//                 }
-//             }
-//         }
-//     }
-
-
-//     // Pseudo sexto cuadrante (pos_ancho < casilla_central_ancho && pos_alto == casilla_central_alto)
-//     else if (pos_ancho < casilla_central_ancho && pos_alto == casilla_central_alto) {
-//         if (pos_ancho + 1 != casilla_central_ancho) {
-//             if (casillas[pos_ancho + 1][pos_alto] == nullptr) {
-//                 pos -> set(pos_ancho + 1, pos_alto);
-//                 return* pos;
-//             }
-//             else if (casillas[pos_ancho + 1][pos_alto] != nullptr) {
-//                 if (casillas[pos_ancho + 1][pos_alto]->getEjercito() != ejercito) {
-//                     juego.combate(casillas[pos_ancho + 1][pos_alto], this); 
-//                     if (vida > 0) {
-//                         pos -> set(pos_ancho + 1, pos_alto);
-//                         return* pos;
-//                     }
-//                     else {
-//                         delete this;
-//                     }
-//                 else if (casillas[pos_ancho + 1][pos_alto]->getEjercito() == ejercito) {
-//                     return *pos;
-//                 }
-//                 }
-//             }
-//         }
-//     }
-
-
-//     // Pseudo septimo cuadrante (pos_ancho == casilla_central_ancho && pos_alto > casilla_central_alto)
-//     else if (pos_ancho == casilla_central_ancho && pos_alto > casilla_central_alto) {
-//         if (pos_alto - 1 != casilla_central_alto) {
-//             if (casillas[pos_ancho][pos_alto - 1] == nullptr) {
-//                 pos -> set(pos_ancho, pos_alto - 1);
-//                 return* pos;
-//             }
-//             else if (casillas[pos_ancho][pos_alto - 1] != nullptr) {
-//                 if (casillas[pos_ancho][pos_alto - 1]->getEjercito() != ejercito) {
-//                     juego.combate(casillas[pos_ancho][pos_alto - 1], this); 
-//                     if (vida > 0) {
-//                         pos -> set(pos_ancho, pos_alto - 1);
-//                         return* pos;
-//                     }
-//                     else {
-//                         delete this;
-//                     }
-//                 else if (casillas[pos_ancho][pos_alto - 1]->getEjercito() == ejercito) {
-//                     return *pos;
-//                 }
-//                 }
-//             }
-//         }
-//     }
-
-
-//     // Pseudo octavo cuadrante (pos_ancho > casilla_central_ancho && pos_alto == casilla_central_alto)
-//     else if (pos_ancho > casilla_central_ancho && pos_alto == casilla_central_alto) {
-//         if (pos_ancho + 1 != casilla_central_ancho) {
-//             if (casillas[pos_ancho - 1][pos_alto] == nullptr) {
-//                 pos -> set(pos_ancho - 1, pos_alto);
-//                 return* pos;
-//             }
-//             else if (casillas[pos_ancho -1][pos_alto] != nullptr) {
-//                 if (casillas[pos_ancho -1][pos_alto]->getEjercito() != ejercito) {
-//                     juego.combate(casillas[pos_ancho - 1][pos_alto], this); 
-//                     if (vida > 0) {
-//                         pos -> set(pos_ancho -1, pos_alto);
-//                         return* pos;
-//                     }
-//                     else {
-//                         delete this;
-//                     }
-//                 else if (casillas[pos_ancho -1][pos_alto]->getEjercito() == ejercito) {
-//                     return *pos;
-//                 }
-//                 }
-//             }
-//         }    
-//     }
-// }
+    // Pseudo septimo cuadrante (pos_ancho == casilla_central_ancho && pos_alto > casilla_central_alto)
+    else if (pos_ancho == casilla_central_ancho && pos_alto > casilla_central_alto) {
+        if (pos_alto - 1 != casilla_central_alto) {
+            if (casillas[pos_ancho][pos_alto - 1] == nullptr) {
+                pos -> set(pos_ancho, pos_alto - 1);
+                return* pos;
+            }
+            else if (casillas[pos_ancho][pos_alto - 1] != nullptr) {
+                if (casillas[pos_ancho][pos_alto - 1]->getEjercito() != ejercito) {
+                    juego.combate(casillas[pos_ancho][pos_alto - 1], this); 
+                    if (vida > 0) {
+                        pos -> set(pos_ancho, pos_alto - 1);
+                        return* pos;
+                    }
+                    else {
+                        delete this;
+                    }
+                }
+                else if (casillas[pos_ancho][pos_alto - 1]->getEjercito() == ejercito) {
+                    return *pos;
+                }
+                }
+            }
+        }
+    
+    // Pseudo octavo cuadrante (pos_ancho > casilla_central_ancho && pos_alto == casilla_central_alto)
+    else if (pos_ancho > casilla_central_ancho && pos_alto == casilla_central_alto) {
+        if (pos_ancho + 1 != casilla_central_ancho) {
+            if (casillas[pos_ancho - 1][pos_alto] == nullptr) {
+                pos -> set(pos_ancho - 1, pos_alto);
+                return* pos;
+            }
+            else if (casillas[pos_ancho -1][pos_alto] != nullptr) {
+                if (casillas[pos_ancho -1][pos_alto]->getEjercito() != ejercito) {
+                    juego.combate(casillas[pos_ancho - 1][pos_alto], this); 
+                    if (vida > 0) {
+                        pos -> set(pos_ancho -1, pos_alto);
+                        return* pos;
+                    }
+                    else {
+                        delete this;
+                    }
+                    }
+                else if (casillas[pos_ancho -1][pos_alto]->getEjercito() == ejercito) {
+                    return *pos;
+                }
+                }
+            }
+        }    
 }
