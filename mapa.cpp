@@ -9,7 +9,8 @@ Mapa::Mapa(int ancho, int alto) {
     this -> ancho = ancho;
     this -> alto = alto;
     
-    // Investigado desde https://levelup.gitconnected.com/learning-c-storing-class-objects-in-containers-ca12546f1a89
+    // Vectores investigados desde https://bitbucket.org/rdelpianoc/pbn/src/master/12%20herencia%20y%20polimorfismo/main.cpp
+    // https://levelup.gitconnected.com/learning-c-storing-class-objects-in-containers-ca12546f1a89
     // https://stackoverflow.com/questions/14444363/trying-to-store-objects-in-a-vector
     // https://www.scaler.com/topics/cpp-vector-resize/
     casillas.resize(alto, std::vector<Personaje*>(ancho, nullptr));
