@@ -8,6 +8,9 @@
 Mapa::Mapa(int ancho, int alto) {
     this -> ancho = ancho;
     this -> alto = alto;
+    
+    // Investigado desde https://levelup.gitconnected.com/learning-c-storing-class-objects-in-containers-ca12546f1a89
+    // https://stackoverflow.com/questions/14444363/trying-to-store-objects-in-a-vector
     casillas.resize(alto, std::vector<Personaje*>(ancho, nullptr));
 }
 
