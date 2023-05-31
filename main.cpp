@@ -83,7 +83,6 @@ int main() {
         Posicion pos = Posicion(pos_x, pos_y);
         soldados_ejercito2[i] = new Personaje(nombre, vida, fuerza, velocidad, pos, 2);
     }
-
     archivo.close();
 
 
@@ -101,10 +100,15 @@ int main() {
 
     mapa.mostrarCasillas();
 
-
     Juego juego;
     juego.calcularPromedios(soldados_ejercito1, &cantidad_de_soldados1);
     juego.calcularPromedios(soldados_ejercito2, &cantidad_de_soldados2);
+
+    cout << "TEST COMBATES" << endl;
+    for (int i = 0; i < cantidad_de_soldados1; i++) {
+        juego.combate(soldados_ejercito1[i], soldados_ejercito2[i]);
+    }
+    cout << "----------------------------------------" << endl;
 
 
     for (int i = 0; i < cantidad_de_soldados1; i++) {

@@ -11,9 +11,6 @@ Mapa::Mapa(int ancho, int alto) {
     casillas.resize(ancho, std::vector<Personaje*>(alto, nullptr));
 }
 
-Mapa::~Mapa() {
-}
-
 
 int Mapa::casillaCentralX() {
     return ancho / 2;
