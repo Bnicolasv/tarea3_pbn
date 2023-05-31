@@ -20,6 +20,7 @@ float Juego::calcularPromedios(Personaje* personajes[], int* cantidad_de_soldado
 
     promedio_velocidad_ejercito = static_cast<float>(suma_velocidades_ejercito) / static_cast<int>(*cantidad_de_soldados);    
     std::cout << "El promedio de velocidades del ejercito es : " << promedio_velocidad_ejercito << std::endl;
+    return promedio_velocidad_ejercito;
 }
 
 
