@@ -45,6 +45,7 @@ void Personaje::recibirAtaque(Personaje* enemigo) {
 
 Posicion Personaje::moverse() {
     
+    
 
 
 

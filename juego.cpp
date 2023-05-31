@@ -22,18 +22,34 @@ void Juego::jugar() {
 
 }
 
-/*
-void Juego::chequearGanador() {
-    // Idea de implementacion
-    if (soldados_ejercito1 == 0) {
-        std::cout << "Ha ganado el ejercito 2!" << std::endl;
+
+void Juego::chequearGanador(Personaje* soldados_ejercito1[], int* cantidad_soldados_ejercito1, Personaje* soldados_ejercito2[], int* cantidad_soldados_ejercito2) {
+    bool ejercito1_pierde = true;
+    for (int i = 0; i < *cantidad_soldados_ejercito1; i++) {
+        if (soldados_ejercito1[i]->getVida() > 0) {
+            ejercito1_pierde = false;
+            break;
+        }
     }
 
-    else if (soldados_ejercito2 == 0) {
-        std::cout << "Ha ganado el ejercito 1!" << std::endl;
+    if (ejercito1_pierde) {
+        std::cout << "El ejercito 1 tiene todos sus soldados muertos. Ha ganado el ejercito 2" << std::endl;
+        return;
+    }
+
+    bool ejercito2_pierde = true;
+    for (int i = 0; i < *cantidad_soldados_ejercito2; i++) {
+        if (soldados_ejercito2[i]->getVida() > 0) {
+            ejercito2_pierde = false;
+            break;
+        }
+    }
+
+    if (ejercito2_pierde) {
+        std::cout << "El ejercito 2 tiene todos sus soldados muertos. Ha ganado el ejercito 1" << std::endl;
+        return;
     }
 }
-*/
 
 int Juego::calcularTurno() {
     
