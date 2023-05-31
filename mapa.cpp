@@ -79,6 +79,6 @@ void Mapa::mostrarCasillas() {
     }
 }
 
-std::vector<std::vector<Personaje*>> Mapa::getCasillas() {
+std::vector<std::vector<Personaje*> > Mapa::getCasillas() {
     return casillas;
 }

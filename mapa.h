@@ -1,9 +1,10 @@
-#include <iostream>
-#include <vector>
-#include "personaje.h"
+#include "juego.h"
 
-#ifndef MAPA
-#define MAPA
+#ifndef MAPA_H
+#define MAPA_H
+
+class Personaje;
+class Juego;
 
 class Mapa {
     public:
@@ -15,7 +16,7 @@ class Mapa {
         void agregarPersonaje(Personaje* personaje);
         void eliminarPersonaje(Personaje* personaje);
         void mostrarCasillas(); 
-        std::vector<std::vector<Personaje*>> getCasillas();
+        std::vector<std::vector<Personaje*> > getCasillas();
 
     private:
         int ancho, alto;
