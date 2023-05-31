@@ -21,6 +21,14 @@ int Mapa::casillaCentralY() {
     return alto / 2;
 } 
 
+int Mapa::getAncho() {
+    return ancho;
+}
+
+int Mapa::getAlto() {
+    return alto;
+}
+
 void Mapa::agregarPersonaje(Personaje* personaje) {
     int pos_x = personaje->getPosicion().getX();
     int pos_y = personaje->getPosicion().getY();
