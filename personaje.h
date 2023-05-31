@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include "posicion.h"
+#include "juego.h"
 // #include "mapa.h"
 
 #ifndef PERSONAJE
@@ -12,7 +13,7 @@ class Personaje {
         ~Personaje();
         Personaje();
 
-        // Posicion moverse(Mapa mapa);
+        Posicion moverse(Mapa mapa, Juego juego);
         void recibirAtaque(Personaje* enemigo);
         std::string getNombre() const;
         int getVida() const;

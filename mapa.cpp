@@ -12,13 +12,13 @@ Mapa::Mapa(int ancho, int alto) {
 }
 
 
-int Mapa::casillaCentralX() {
-    return ancho / 2;
+int Mapa::casillaCentralX() {   
+    return ancho / 2;   // Como es impar siempre, se truncara y dara un resultado correcto al tratarse como int
 }
 
 
 int Mapa::casillaCentralY() {
-    return alto / 2;
+    return alto / 2;    // Como es impar siempre, se truncara y dara un resultado correcto al tratarse como int
 } 
 
 int Mapa::getAncho() const{

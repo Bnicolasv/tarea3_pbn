@@ -116,6 +116,8 @@ void Juego::jugar() {
     }
     cout << "----------------------------------------" << endl;
 
+    // ESTO HAY QUE SACARLO PORQUE PARA CADA COMBATE SE LLAMARA A THIS
+    // SOLO SE DEBE HACER DELETE CON UN FOR DE LOS QUE QUEDEN VIVOS UNA VEZ UN EJERCITO GANE
     for (int i = 0; i < cantidad_de_soldados1; i++) {
         delete soldados_ejercito1[i];
     }
