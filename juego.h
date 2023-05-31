@@ -3,7 +3,8 @@
 
 #include "posicion.h"
 #include "mapa.h"
-class Personaje;
+#include "personaje.h"
+
 
 class Juego {
     public:
