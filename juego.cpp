@@ -19,7 +19,7 @@ float Juego::calcularPromedios(Personaje* personajes[], int* cantidad_de_soldado
 
 
 void Juego::jugar() {
-
+    // Traspasar aqui la lectura del archivo y casi todo lo del main
 }
 
 
@@ -51,10 +51,16 @@ void Juego::chequearGanador(Personaje* soldados_ejercito1[], int* cantidad_solda
     }
 }
 
-int Juego::calcularTurno() {
-    
+// Para ver quien parte?
+int Juego::calcularTurno(float* promedio_velocidad_ejercito1, float* promedio_velocidad_ejercito2) {
+    int indice_ejercito = 0;
+    if (*promedio_velocidad_ejercito1 > *promedio_velocidad_ejercito2) {
+        return indice_ejercito = 1;
+    }
+    else {
+        return indice_ejercito = 2;
+    }
 }
-
 
 void Juego::mostrarMapa() {
 
