@@ -1,11 +1,7 @@
-#include <string>
-#include <iostream>
-#include "posicion.h"
-#include "juego.h"
-// #include "mapa.h"
+#ifndef PERSONAJE_H
+#define PERSONAJE_H
 
-#ifndef PERSONAJE
-#define PERSONAJE
+#include "juego.h"
 
 class Personaje {
     public:

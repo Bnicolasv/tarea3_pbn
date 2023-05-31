@@ -1,7 +1,9 @@
-#include <string>
-#include <iostream>
+#ifndef JUEGO_H
+#define JUEGO_H
+
 #include "posicion.h"
-#include "personaje.h"
+#include "mapa.h"
+class Personaje;
 
 class Juego {
     public:
@@ -12,3 +14,5 @@ class Juego {
         void mostrarMapa();
         void combate(Personaje *p1, Personaje *p2);
 };
+
+#endif
