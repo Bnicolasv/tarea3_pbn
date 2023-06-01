@@ -287,8 +287,8 @@ void Juego::jugar() {
 
 
                     } 
-                }
             continuar = false;
+                }
         }
     
                         
