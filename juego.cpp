@@ -256,6 +256,7 @@ void Juego::jugar() {
     mapa = Mapa(alto, ancho);
     // Mapa* mapa_ptr = &mapa;
     
+    cout << endl;
     cout << "Tablero vacio" << endl;
     mostrarMapa();
 
@@ -267,6 +268,7 @@ void Juego::jugar() {
         mapa.agregarPersonaje(soldados_ejercito2[j]);
     }
 
+    cout << endl;
     cout << "Turno 0" << endl;
     mostrarMapa();
 
