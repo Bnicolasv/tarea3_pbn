@@ -6,126 +6,59 @@
 #include <vector>
 #include "juego.h"
 
-
 using namespace std;
 
+float Juego::calcularPromediosEjercito1(Mapa* mapa_ptr) {
+    vector<vector<Personaje*>> casillas = mapa_ptr->getCasillas();
+    
+    int ancho = mapa_ptr->getAncho();
+    int alto = mapa_ptr->getAlto();
 
-float Juego::calcularPromedios(Personaje* personajes[], int* cantidad_de_soldados) {
-    int suma_velocidades_ejercito = 0;
-    float promedio_velocidad_ejercito = 0;
+    float suma_velocidades_ejercito1 = 0;
+    int aux = 0;
+    float promedio_velocidad_ejercito1 = 0;
 
-    for (int i = 0; i < *cantidad_de_soldados; i++) {
-        suma_velocidades_ejercito += personajes[i]->getVelocidad();  
+    for (int i = 0; i < ancho; i++) {
+        for (int j = 0; j < alto; j++) {
+            if (casillas[i][j] != nullptr) {
+                if (casillas[i][j]->getEjercito() == 1) {
+                    aux++;
+                    suma_velocidades_ejercito1 += casillas[i][j]->getVelocidad();
+                }
+            }
+        }
     }
 
-    promedio_velocidad_ejercito = static_cast<float>(suma_velocidades_ejercito) / static_cast<int>(*cantidad_de_soldados);    
-    std::cout << "El promedio de velocidades del ejercito es : " << promedio_velocidad_ejercito << std::endl;
-    return promedio_velocidad_ejercito;
+    promedio_velocidad_ejercito1 = suma_velocidades_ejercito1 / aux;   
+    // std::cout << "El promedio de velocidades del ejercito es : " << promedio_velocidad_ejercito << std::endl;
+    return promedio_velocidad_ejercito1;
 }
 
+float Juego::calcularPromediosEjercito2(Mapa* mapa_ptr) {
+    vector<vector<Personaje*>> casillas = mapa_ptr->getCasillas();
+    
+    int ancho = mapa_ptr->getAncho();
+    int alto = mapa_ptr->getAlto();
 
-void Juego::jugar() {
-    ifstream archivo("soldados_short.txt");
-    string linea;
-    getline(archivo, linea);
+    float suma_velocidades_ejercito2 = 0;
+    int aux = 0;
+    float promedio_velocidad_ejercito2 = 0;
 
-    stringstream dimensiones(linea);
-    string ancho_str, alto_str;
-    getline(dimensiones, ancho_str, ',');
-    getline(dimensiones, alto_str, ',');
-    int ancho = stoi(ancho_str);
-    int alto = stoi(alto_str);
-
-    getline(archivo, linea);
-    stringstream soldados1(linea);
-    int cantidad_de_soldados1;
-    soldados1 >> cantidad_de_soldados1;
-
-    Personaje *soldados_ejercito1[cantidad_de_soldados1];
-
-    for (int i = 0; i < cantidad_de_soldados1; i++) {
-        getline(archivo, linea);
-        stringstream soldado1(linea);
-        string nombre;
-        int vida, fuerza, velocidad, pos_x, pos_y;
-
-        getline(soldado1, nombre, ',');
-        soldado1 >> vida;
-        soldado1.ignore();
-        soldado1 >> fuerza;
-        soldado1.ignore();
-        soldado1 >> velocidad;
-        soldado1.ignore();
-        soldado1 >> pos_x;
-        soldado1.ignore();
-        soldado1 >> pos_y;
-
-        Posicion pos = Posicion(pos_x, pos_y);
-        soldados_ejercito1[i] = new Personaje(nombre, vida, fuerza, velocidad, pos, 1);
+    for (int i = 0; i < ancho; i++) {
+        for (int j = 0; j < alto; j++) {
+            if (casillas[i][j] != nullptr) {
+                if (casillas[i][j]->getEjercito() == 2) {
+                    aux++;
+                    suma_velocidades_ejercito2 += casillas[i][j]->getVelocidad();
+                }
+            }
+        }
     }
 
-    getline(archivo, linea);
-    stringstream soldados2(linea);
-    int cantidad_de_soldados2;
-    soldados2 >> cantidad_de_soldados2;
-
-    Personaje *soldados_ejercito2[cantidad_de_soldados2];
-
-    for (int i = 0; i < cantidad_de_soldados2; i++) {
-        getline(archivo, linea);
-        stringstream soldado2(linea);
-        string nombre;
-        int vida, fuerza, velocidad, pos_x, pos_y;
-
-        getline(soldado2, nombre, ',');
-        soldado2 >> vida;
-        soldado2.ignore(); 
-        soldado2 >> fuerza;
-        soldado2.ignore();
-        soldado2 >> velocidad;
-        soldado2.ignore();
-        soldado2 >> pos_x;
-        soldado2.ignore();
-        soldado2 >> pos_y;
-
-        Posicion pos = Posicion(pos_x, pos_y);
-        soldados_ejercito2[i] = new Personaje(nombre, vida, fuerza, velocidad, pos, 2);
-    }
-    archivo.close();
-
-        Mapa mapa(alto, ancho);
-
-    for (int i = 0; i < cantidad_de_soldados1; i++) {
-        mapa.agregarPersonaje(soldados_ejercito1[i]);
-    }
-
-    for (int j = 0; j < cantidad_de_soldados2; j++) {
-        mapa.agregarPersonaje(soldados_ejercito2[j]);
-    }
-
-    mapa.mostrarCasillas();
-
-    Juego juego;
-    juego.calcularPromedios(soldados_ejercito1, &cantidad_de_soldados1);
-    juego.calcularPromedios(soldados_ejercito2, &cantidad_de_soldados2);
-
-    cout << "TEST COMBATES" << endl;
-    for (int i = 0; i < cantidad_de_soldados1; i++) {
-        juego.combate(soldados_ejercito1[i], soldados_ejercito2[i]);
-    }
-    cout << "----------------------------------------" << endl;
-
-    // ESTO HAY QUE SACARLO PORQUE PARA CADA COMBATE SE LLAMARA A THIS
-    // SOLO SE DEBE HACER DELETE CON UN FOR DE LOS QUE QUEDEN VIVOS UNA VEZ UN EJERCITO GANE
-    for (int i = 0; i < cantidad_de_soldados1; i++) {
-        delete soldados_ejercito1[i];
-    }
-
-    for (int i = 0; i < cantidad_de_soldados2; i++) {
-        delete soldados_ejercito2[i];
-    }
+    promedio_velocidad_ejercito2 = suma_velocidades_ejercito2 / aux;    
+    // std::cout << "El promedio de velocidades del ejercito es : " << promedio_velocidad_ejercito << std::endl;
+    return promedio_velocidad_ejercito2;
 }
-
 
 void Juego::chequearGanador(Personaje* soldados_ejercito1[], int* cantidad_soldados_ejercito1, Personaje* soldados_ejercito2[], int* cantidad_soldados_ejercito2) {
     bool ejercito1_pierde = true;
@@ -155,21 +88,23 @@ void Juego::chequearGanador(Personaje* soldados_ejercito1[], int* cantidad_solda
     }
 }
 
-// Para ver quien parte?
-int Juego::calcularTurno(float* promedio_velocidad_ejercito1, float* promedio_velocidad_ejercito2) {
+int Juego::calcularTurno(float promedio_velocidad_ejercito1, float promedio_velocidad_ejercito2) {
     int indice_ejercito = 0;
-    if (*promedio_velocidad_ejercito1 > *promedio_velocidad_ejercito2) {
-        return indice_ejercito = 1;
+
+    if (promedio_velocidad_ejercito1 > promedio_velocidad_ejercito2) {
+        std::cout << "Comienzan atacando los soldados del ejercito 1" << std::endl;        
+        indice_ejercito = 1;
     }
     else {
-        return indice_ejercito = 2;
+        std::cout << "Comienzan atacando los soldados del ejercito 2" << std::endl;
+        indice_ejercito = 2;
     }
+    return indice_ejercito;
 }
 
 void Juego::mostrarMapa() {
-
+    mapa.mostrarCasillas();
 }
-
 
 void Juego::combate(Personaje *p1, Personaje *p2) {
     // Ataca primero el personaje con mayor velocidad. Si tienen la misma velocidad, parte el que tenga 
@@ -251,3 +186,117 @@ void Juego::combate(Personaje *p1, Personaje *p2) {
     ganador = (p1->getVida() > 0) ? p1:p2;
     std::cout << "Combate finalizado, ha ganado " << ganador->getNombre() << std::endl;
 }
+
+
+void Juego::jugar() {
+    ifstream archivo("soldados_short.txt");
+    string linea;
+    getline(archivo, linea);
+
+    stringstream dimensiones(linea);
+    string ancho_str, alto_str;
+    getline(dimensiones, ancho_str, ',');
+    getline(dimensiones, alto_str, ',');
+    int ancho = stoi(ancho_str);
+    int alto = stoi(alto_str);
+
+    getline(archivo, linea);
+    stringstream soldados1(linea);
+    int cantidad_de_soldados1;
+    soldados1 >> cantidad_de_soldados1;
+
+    Personaje *soldados_ejercito1[cantidad_de_soldados1];
+
+    for (int i = 0; i < cantidad_de_soldados1; i++) {
+        getline(archivo, linea);
+        stringstream soldado1(linea);
+        string nombre;
+        int vida, fuerza, velocidad, pos_x, pos_y;
+
+        getline(soldado1, nombre, ',');
+        soldado1 >> vida;
+        soldado1.ignore();
+        soldado1 >> fuerza;
+        soldado1.ignore();
+        soldado1 >> velocidad;
+        soldado1.ignore();
+        soldado1 >> pos_x;
+        soldado1.ignore();
+        soldado1 >> pos_y;
+
+        Posicion pos = Posicion(pos_x, pos_y);
+        soldados_ejercito1[i] = new Personaje(nombre, vida, fuerza, velocidad, pos, 1);
+    }
+
+    getline(archivo, linea);
+    stringstream soldados2(linea);
+    int cantidad_de_soldados2;
+    soldados2 >> cantidad_de_soldados2;
+
+    Personaje *soldados_ejercito2[cantidad_de_soldados2];
+
+    for (int i = 0; i < cantidad_de_soldados2; i++) {
+        getline(archivo, linea);
+        stringstream soldado2(linea);
+        string nombre;
+        int vida, fuerza, velocidad, pos_x, pos_y;
+
+        getline(soldado2, nombre, ',');
+        soldado2 >> vida;
+        soldado2.ignore(); 
+        soldado2 >> fuerza;
+        soldado2.ignore();
+        soldado2 >> velocidad;
+        soldado2.ignore();
+        soldado2 >> pos_x;
+        soldado2.ignore();
+        soldado2 >> pos_y;
+
+        Posicion pos = Posicion(pos_x, pos_y);
+        soldados_ejercito2[i] = new Personaje(nombre, vida, fuerza, velocidad, pos, 2);
+    }
+    archivo.close();
+
+    mapa = Mapa(alto, ancho);
+
+    Mapa* mapa_ptr = &mapa;
+    
+    cout << "Tablero vacio" << endl;
+    mostrarMapa();
+
+    for (int i = 0; i < cantidad_de_soldados1; i++) {
+        mapa.agregarPersonaje(soldados_ejercito1[i]);
+    }
+
+    for (int j = 0; j < cantidad_de_soldados2; j++) {
+        mapa.agregarPersonaje(soldados_ejercito2[j]);
+    }
+
+    cout << "Turno 0" << endl;
+    mostrarMapa();
+
+    float promedio_velocidad_ejercito1 = calcularPromediosEjercito1(mapa_ptr);
+    float promedio_velocidad_ejercito2 = calcularPromediosEjercito2(mapa_ptr);
+
+    int ejercito_iniciador = calcularTurno(promedio_velocidad_ejercito1, promedio_velocidad_ejercito2);
+    if (ejercito_iniciador == 1) {cout << "Parte el ejercito 1" << endl;}
+    if (ejercito_iniciador == 2) {cout << "Parte el ejercito 2" << endl;}
+
+
+    // cout << "TEST COMBATES" << endl;
+    // for (int i = 0; i < cantidad_de_soldados1; i++) {
+    //     combate(soldados_ejercito1[i], soldados_ejercito2[i]);
+    // }
+    // cout << "----------------------------------------" << endl;
+
+    // ESTO HAY QUE SACARLO PORQUE PARA CADA COMBATE SE LLAMARA A THIS
+    // SOLO SE DEBE HACER DELETE CON UN FOR DE LOS QUE QUEDEN VIVOS UNA VEZ UN EJERCITO GANE
+    for (int i = 0; i < cantidad_de_soldados1; i++) {
+        delete soldados_ejercito1[i];
+    }
+
+    for (int i = 0; i < cantidad_de_soldados2; i++) {
+        delete soldados_ejercito2[i];
+    }
+}
+

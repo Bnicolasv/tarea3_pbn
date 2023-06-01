@@ -18,7 +18,7 @@ Personaje::Personaje(std::string nombre, int vida, int fuerza, int velocidad, Po
 Personaje::Personaje() {}
 
 Personaje::~Personaje() {
-    std::cout << "El personaje ha sido eliminado del tablero" << std::endl;
+    // std::cout << "El personaje ha sido eliminado del tablero" << std::endl;
 }
 
 std::string Personaje::getNombre() const{

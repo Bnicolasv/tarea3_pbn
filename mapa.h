@@ -9,6 +9,7 @@ class Juego;
 
 class Mapa {
     public:
+        Mapa() = default;
         Mapa(int ancho, int alto);
         int casillaCentralX();
         int casillaCentralY();
