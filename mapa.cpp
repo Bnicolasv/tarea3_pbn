@@ -79,10 +79,14 @@ void Mapa::mostrarCasillas() {
 
                     if (linea == 0) {
                         std::cout << std::setw(espacios_izq_nombre) << "" << nombre << std::setw(espacios_der_nombre) << "";
-                    } else if (linea == 1) {
+                    } 
+                    
+                    else if (linea == 1) {
                         std::cout << std::setw(espacios_izq_ejercito) << "" << ejercito << std::setw(espacios_der_ejercito) << "";
                     }
-                } else {
+                } 
+                
+                else {
                     std::cout << std::setw(5) << "";
                 }
             }
