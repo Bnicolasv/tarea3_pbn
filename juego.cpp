@@ -12,32 +12,37 @@ using namespace std;
 void Juego::chequearGanador() {
     vector<vector<Personaje*>> casillas = mapa.getCasillas();
 
+    int ancho = mapa.getAncho();
+    int alto = mapa.getAlto();
 
-    // bool ejercito1_pierde = true;
-    // for (int i = 0; i < *cantidad_soldados_ejercito1; i++) {
-    //     if (soldados_ejercito1[i]->getVida() > 0) {
-    //         ejercito1_pierde = false;
-    //         break;
-    //     }
-    // }
+    int soldados_ejercito1_vivos = 0;
+    int soldados_ejercito2_vivos = 0;
 
-    // if (ejercito1_pierde) {
-    //     std::cout << "El ejercito 1 tiene todos sus soldados muertos. Ha ganado el ejercito 2" << std::endl;
-    //     return;
-    // }
+    for (int i = 0; i < alto; i++) {
+        for (int j = 0; j < ancho; j++) {
+            if (casillas[i][j] != nullptr && casillas[i][j]->getEjercito() == 1 && casillas[i][j]->getVida() > 0) {
+                soldados_ejercito1_vivos++;
+            }
+            else if (casillas[i][j] != nullptr && casillas[i][j]->getEjercito() == 2 && casillas[i][j]->getVida() > 0) {
+                soldados_ejercito2_vivos++;
+            }
+            else {
+                continue;
+            }
+        }
+    }
 
-    // bool ejercito2_pierde = true;
-    // for (int i = 0; i < *cantidad_soldados_ejercito2; i++) {
-    //     if (soldados_ejercito2[i]->getVida() > 0) {
-    //         ejercito2_pierde = false;
-    //         break;
-    //     }
-    // }
+    if (soldados_ejercito1_vivos == 0 && soldados_ejercito2_vivos > 0) {
+        cout << "Todos los soldados del ejercito 1 han muerto. Ha ganado el ejercito 2" << endl;
+    }
 
-    // if (ejercito2_pierde) {
-    //     std::cout << "El ejercito 2 tiene todos sus soldados muertos. Ha ganado el ejercito 1" << std::endl;
-    //     return;
-    // }
+    else if (soldados_ejercito2_vivos == 0 && soldados_ejercito1_vivos > 0) {
+        cout << "Todos los soldados del ejercito 2 han muerto. Ha ganado el ejercito 1" << endl;
+    }
+
+    else {
+        cout << "Existen soldados vivos de ambos ejercitos. La batalla continua" << endl;
+    }
 }
 
 int Juego::calcularTurno() {
