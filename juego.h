@@ -9,8 +9,6 @@
 class Juego {
     public:
         Juego() = default;
-        float calcularPromediosEjercito1(Mapa* mapa_ptr);
-        float calcularPromediosEjercito2(Mapa* mapa_ptr);
         void jugar();
         void chequearGanador();
         int calcularTurno();
