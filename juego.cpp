@@ -118,55 +118,54 @@ void Juego::combate(Personaje *p1, Personaje *p2) {
         atacante = p1;
         defensor = p2;
 
-        // FALTA MOSTRAR JUNTO AL NOMBRE EL EJERCITO AL CUAL PERTENECEN 'BENJA1', 'PEDRO2'
-        std::cout << "La velocidad de " << atacante->getNombre() << " es de " << atacante->getVelocidad() << ", ";
-        std::cout << "la de " << defensor->getNombre() << " es de " << defensor->getVelocidad() << ", ";
-        std::cout << "comienza atacando " << atacante->getNombre() << std::endl;
+        std::cout << "La velocidad de " << atacante->getNombre() << atacante->getEjercito() << " es de " << atacante->getVelocidad() << ", ";
+        std::cout << "la de " << defensor->getNombre() << defensor->getEjercito() << " es de " << defensor->getVelocidad() << ", ";
+        std::cout << "comienza atacando " << atacante->getNombre() << atacante->getEjercito() << std::endl;
     }
 
     else if (p2->getVelocidad() > p1->getVelocidad()) {
         atacante = p2;
         defensor = p1;
 
-        std::cout << "La velocidad de " << atacante->getNombre() << " es de " << atacante->getVelocidad() << ", ";
-        std::cout << "la de " << defensor->getNombre() << " es de " << defensor->getVelocidad() << ", ";
-        std::cout << "comienza atacando " << atacante->getNombre() << std::endl;
+        std::cout << "La velocidad de " << atacante->getNombre() << atacante->getEjercito() << " es de " << atacante->getVelocidad() << ", ";
+        std::cout << "la de " << defensor->getNombre() << defensor->getEjercito() << " es de " << defensor->getVelocidad() << ", ";
+        std::cout << "comienza atacando " << atacante->getNombre() << atacante->getEjercito() << std::endl;
     }
 
     else if (p1->ataque() > p2->ataque()) {
         atacante = p1;
         defensor = p2;
         
-        std::cout << "El ataque de " << atacante->getNombre() << " es de " << atacante->ataque() << ", ";
-        std::cout << "el de " << defensor->getNombre() << " es de " << defensor->ataque() << ", ";
-        std::cout << "comienza atacando " << atacante->getNombre() << std::endl;
+        std::cout << "El ataque de " << atacante->getNombre() << atacante->getEjercito() << " es de " << atacante->ataque() << ", ";
+        std::cout << "el de " << defensor->getNombre() << defensor->getEjercito() << " es de " << defensor->ataque() << ", ";
+        std::cout << "comienza atacando " << atacante->getNombre() << atacante->getEjercito() << std::endl;
     }
 
     else if (p2->ataque() > p1->ataque()) {
         atacante = p2;
         defensor = p1;
 
-        std::cout << "El ataque de " << atacante->getNombre() << " es de " << atacante->ataque() << ", ";
-        std::cout << "el de " << defensor->getNombre() << " es de " << defensor->ataque() << ", ";
-        std::cout << "comienza atacando " << atacante->getNombre() << std::endl;
+        std::cout << "El ataque de " << atacante->getNombre() << atacante->getEjercito() << " es de " << atacante->ataque() << ", ";
+        std::cout << "el de " << defensor->getNombre() << defensor->getEjercito() << " es de " << defensor->ataque() << ", ";
+        std::cout << "comienza atacando " << atacante->getNombre() << atacante->getEjercito() << std::endl;
     }
 
     else if (p1->getVida() > p2->getVida()) {
         atacante = p1;
         defensor = p2;
 
-        std::cout << "La vida de " << atacante->getNombre() << " es de " << atacante->getVida() << ",";
-        std::cout << "la de " << defensor->getNombre() << " es de " << defensor->getVida() << ",";
-        std::cout << "comienza atacando" << atacante->getNombre() << std::endl;
+        std::cout << "La vida de " << atacante->getNombre() << atacante->getEjercito() << " es de " << atacante->getVida() << ",";
+        std::cout << "la de " << defensor->getNombre() << defensor->getEjercito() << " es de " << defensor->getVida() << ",";
+        std::cout << "comienza atacando" << atacante->getNombre() << atacante->getEjercito() << std::endl;
     }
 
     else if (p2->getVida() > p1->getVida()) {
         atacante = p2;
         defensor = p1;
 
-        std::cout << "La vida de " << atacante->getNombre() << " es de " << atacante->getVida() << ",";
-        std::cout << "la de " << defensor->getNombre() << " es de " << defensor->getVida() << ",";
-        std::cout << "comienza atacando" << atacante->getNombre() << std::endl;
+        std::cout << "La vida de " << atacante->getNombre() << atacante->getEjercito() << " es de " << atacante->getVida() << ",";
+        std::cout << "la de " << defensor->getNombre() << defensor->getEjercito() << " es de " << defensor->getVida() << ",";
+        std::cout << "comienza atacando" << atacante->getNombre() << atacante->getEjercito() << std::endl;
     }
 
     // Una vez que ya se sabe quien ataca y quien defiende, comienzan a pegarse hasta que uno de ellos pierda
@@ -182,7 +181,7 @@ void Juego::combate(Personaje *p1, Personaje *p2) {
     // Evalua con el operador ternario '?' cual personaje quedo como ganador
     // https://es.stackoverflow.com/questions/384162/qu%C3%A9-hace-el-operador-en-c
     ganador = (p1->getVida() > 0) ? p1:p2;
-    std::cout << "Combate finalizado, ha ganado " << ganador->getNombre() << std::endl;
+    std::cout << "Combate finalizado, ha ganado " << ganador->getNombre() << ganador->getEjercito() << std::endl;
 }
 
 
@@ -283,11 +282,9 @@ void Juego::jugar() {
         while (continuar){
             for (int i = 0; i < alto; i++){
                 for (int j = 0; j < ancho; j++){
+
                         soldados_ejercito1[j]->moverse(mapa, *this);
                         soldados_ejercito2[i]->moverse(mapa, *this);
-
-                        
-
 
                     } 
                 }
