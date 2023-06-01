@@ -1,8 +1,8 @@
 #include "juego.h"
 #include <vector>
 
-#ifndef MAPA_H
-#define MAPA_H
+#ifndef MAPA
+#define MAPA
 
 class Personaje;
 class Juego;

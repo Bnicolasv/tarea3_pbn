@@ -1,5 +1,5 @@
-#ifndef JUEGO_H
-#define JUEGO_H
+#ifndef JUEGO
+#define JUEGO
 
 #include "posicion.h"
 #include "mapa.h"

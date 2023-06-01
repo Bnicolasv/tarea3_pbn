@@ -1,6 +1,7 @@
-#ifndef PERSONAJE_H
-#define PERSONAJE_H
+#ifndef PERSONAJE
+#define PERSONAJE
 
+#include <string>
 #include "juego.h"
 
 class Personaje {
