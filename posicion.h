@@ -1,7 +1,7 @@
 #include "juego.h"
 
-#ifndef POSICION_H
-#define POSICION_H
+#ifndef POSICION
+#define POSICION
 
 class Posicion {
     public:
