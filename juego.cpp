@@ -18,8 +18,8 @@ void Juego::chequearGanador() {
     int soldados_ejercito1_vivos = 0;
     int soldados_ejercito2_vivos = 0;
 
-    for (int i = 0; i < alto; i++) {
-        for (int j = 0; j < ancho; j++) {
+    for (int i = 0; i < ancho; i++) {
+        for (int j = 0; j < alto; j++) {
             if (casillas[i][j] != nullptr && casillas[i][j]->getEjercito() == 1 && casillas[i][j]->getVida() > 0) {
                 soldados_ejercito1_vivos++;
             }
@@ -55,11 +55,11 @@ int Juego::calcularTurno() {
     int aux = 0;
     float promedio_velocidad_ejercito1 = 0;
 
-    for (int i = 0; i < alto; i++) {
-        for (int j = 0; j < ancho; j++) {
-            if (casillas[i][j] != nullptr && casillas[i][j]->getEjercito() == 1) {
+    for (int i = 0; i < ancho; i++) {
+        for (int j = 0; j < alto; j++) {
+            if (casillas[j][i] != nullptr && casillas[j][i]->getEjercito() == 1) {
                 aux++;
-                suma_velocidades_ejercito1 += casillas[i][j]->getVelocidad();
+                suma_velocidades_ejercito1 += casillas[j][i]->getVelocidad();
             }
             else {
                 continue;
@@ -73,11 +73,11 @@ int Juego::calcularTurno() {
     int aux2 = 0;
     float promedio_velocidad_ejercito2 = 0;
 
-    for (int i = 0; i < alto; i++) {
-        for (int j = 0; j < ancho; j++) {
-            if (casillas[i][j] != nullptr && casillas[i][j]->getEjercito() == 2) {
+    for (int i = 0; i < ancho; i++) {
+        for (int j = 0; j < alto; j++) {
+            if (casillas[j][i] != nullptr && casillas[j][i]->getEjercito() == 2) {
                 aux2++;
-                suma_velocidades_ejercito2 += casillas[i][j]->getVelocidad();
+                suma_velocidades_ejercito2 += casillas[j][i]->getVelocidad();
             }
             else {
                 continue;
@@ -184,7 +184,6 @@ void Juego::combate(Personaje *p1, Personaje *p2) {
     std::cout << "Combate finalizado, ha ganado " << ganador->getNombre() << ganador->getEjercito() << std::endl;
 }
 
-
 void Juego::jugar() {
     ifstream archivo("soldados_short.txt");
     string linea;
@@ -280,19 +279,19 @@ void Juego::jugar() {
     if (equipo_inicial == 1){
         bool continuar = true;
         while (continuar){
-            for (int i = 0; i < alto; i++){
-                for (int j = 0; j < ancho; j++){
+            for (int i = 0; i < cantidad_de_soldados1; i++){
+                        cout << soldados_ejercito1[i]->getPosicion().getX() << soldados_ejercito1[i]->getPosicion().getY() << endl;
+                        soldados_ejercito1[i]->moverse(mapa, *this);
 
-                        soldados_ejercito1[j]->moverse(mapa, *this);
-                        soldados_ejercito2[i]->moverse(mapa, *this);
+                        
+
 
                     } 
-                }
             continuar = false;
+                }
         }
-    }
     
-    mostrarMapa();                       
+                        
 
 
     // cout << "TEST COMBATES" << endl;

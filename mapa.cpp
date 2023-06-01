@@ -19,12 +19,12 @@ Mapa::Mapa(int ancho, int alto) {
 
 
 int Mapa::casillaCentralX() {   
-    return ancho / 2;   // Como es impar siempre, se truncara y dara un resultado correcto al tratarse como int
+    return ((ancho - 1) / 2);   // Como es impar siempre, se truncara y dara un resultado correcto al tratarse como int
 }
 
 
 int Mapa::casillaCentralY() {
-    return alto / 2;    // Como es impar siempre, se truncara y dara un resultado correcto al tratarse como int
+    return ((alto - 1) / 2);    // Como es impar siempre, se truncara y dara un resultado correcto al tratarse como int
 } 
 
 int Mapa::getAncho() const{
@@ -59,18 +59,18 @@ void Mapa::eliminarPersonaje(Personaje* personaje) {
 // https://es.stackoverflow.com/questions/60783/imprimir-bordes-de-una-matriz-c
 
 void Mapa::mostrarCasillas() {
-    for (int j = 0; j < alto; j++) {
+    for (int j = 0; j < ancho; j++) {
         std::cout << "------";
     }
     std::cout << std::endl;
 
-    for (int i = 0; i < ancho; i++) {
+    for (int i = 0; i < alto; i++) {
         for (int linea = 0; linea < 2; linea++) {
-            for (int j = 0; j < alto; j++) {
+            for (int j = 0; j < ancho; j++) {
                 std::cout << "|";
-                if (casillas[j][i] != nullptr) {
-                    std::string nombre = casillas[j][i]->getNombre();
-                    int ejercito = casillas[j][i]->getEjercito();
+                if (casillas[i][j] != nullptr) {
+                    std::string nombre = casillas[i][j]->getNombre();
+                    int ejercito = casillas[i][j]->getEjercito();
                     int espacios_nombre = 5 - nombre.length();
                     int espacios_ejercito = 5 - std::to_string(ejercito).length();
                     int espacios_izq_nombre = espacios_nombre / 2;
@@ -94,7 +94,7 @@ void Mapa::mostrarCasillas() {
             std::cout << "|" << std::endl;
         }
 
-        for (int j = 0; j < alto; j++) {
+        for (int j = 0; j < ancho; j++) {
             std::cout << "------";
         }
         std::cout << std::endl;
