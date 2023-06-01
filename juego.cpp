@@ -8,57 +8,57 @@
 
 using namespace std;
 
-float Juego::calcularPromediosEjercito1(Mapa* mapa_ptr) {
-    vector<vector<Personaje*>> casillas = mapa_ptr->getCasillas();
+// float Juego::calcularPromediosEjercito1(Mapa* mapa_ptr) {
+//     vector<vector<Personaje*>> casillas = mapa_ptr->getCasillas();
     
-    int ancho = mapa_ptr->getAncho();
-    int alto = mapa_ptr->getAlto();
+//     int ancho = mapa_ptr->getAncho();
+//     int alto = mapa_ptr->getAlto();
 
-    float suma_velocidades_ejercito1 = 0;
-    int aux = 0;
-    float promedio_velocidad_ejercito1 = 0;
+//     float suma_velocidades_ejercito1 = 0;
+//     int aux = 0;
+//     float promedio_velocidad_ejercito1 = 0;
 
-    for (int i = 0; i < ancho; i++) {
-        for (int j = 0; j < alto; j++) {
-            if (casillas[i][j] != nullptr) {
-                if (casillas[i][j]->getEjercito() == 1) {
-                    aux++;
-                    suma_velocidades_ejercito1 += casillas[i][j]->getVelocidad();
-                }
-            }
-        }
-    }
+//     for (int i = 0; i < ancho; i++) {
+//         for (int j = 0; j < alto; j++) {
+//             if (casillas[i][j] != nullptr) {
+//                 if (casillas[i][j]->getEjercito() == 1) {
+//                     aux++;
+//                     suma_velocidades_ejercito1 += casillas[i][j]->getVelocidad();
+//                 }
+//             }
+//         }
+//     }
 
-    promedio_velocidad_ejercito1 = suma_velocidades_ejercito1 / aux;   
-    // std::cout << "El promedio de velocidades del ejercito es : " << promedio_velocidad_ejercito << std::endl;
-    return promedio_velocidad_ejercito1;
-}
+//     promedio_velocidad_ejercito1 = suma_velocidades_ejercito1 / aux;   
+//     // std::cout << "El promedio de velocidades del ejercito es : " << promedio_velocidad_ejercito << std::endl;
+//     return promedio_velocidad_ejercito1;
+// }
 
-float Juego::calcularPromediosEjercito2(Mapa* mapa_ptr) {
-    vector<vector<Personaje*>> casillas = mapa_ptr->getCasillas();
+// float Juego::calcularPromediosEjercito2(Mapa* mapa_ptr) {
+//     vector<vector<Personaje*>> casillas = mapa_ptr->getCasillas();
     
-    int ancho = mapa_ptr->getAncho();
-    int alto = mapa_ptr->getAlto();
+//     int ancho = mapa_ptr->getAncho();
+//     int alto = mapa_ptr->getAlto();
 
-    float suma_velocidades_ejercito2 = 0;
-    int aux = 0;
-    float promedio_velocidad_ejercito2 = 0;
+//     float suma_velocidades_ejercito2 = 0;
+//     int aux = 0;
+//     float promedio_velocidad_ejercito2 = 0;
 
-    for (int i = 0; i < ancho; i++) {
-        for (int j = 0; j < alto; j++) {
-            if (casillas[i][j] != nullptr) {
-                if (casillas[i][j]->getEjercito() == 2) {
-                    aux++;
-                    suma_velocidades_ejercito2 += casillas[i][j]->getVelocidad();
-                }
-            }
-        }
-    }
+//     for (int i = 0; i < ancho; i++) {
+//         for (int j = 0; j < alto; j++) {
+//             if (casillas[i][j] != nullptr) {
+//                 if (casillas[i][j]->getEjercito() == 2) {
+//                     aux++;
+//                     suma_velocidades_ejercito2 += casillas[i][j]->getVelocidad();
+//                 }
+//             }
+//         }
+//     }
 
-    promedio_velocidad_ejercito2 = suma_velocidades_ejercito2 / aux;    
-    // std::cout << "El promedio de velocidades del ejercito es : " << promedio_velocidad_ejercito << std::endl;
-    return promedio_velocidad_ejercito2;
-}
+//     promedio_velocidad_ejercito2 = suma_velocidades_ejercito2 / aux;    
+//     // std::cout << "El promedio de velocidades del ejercito es : " << promedio_velocidad_ejercito << std::endl;
+//     return promedio_velocidad_ejercito2;
+// }
 
 void Juego::chequearGanador(Personaje* soldados_ejercito1[], int* cantidad_soldados_ejercito1, Personaje* soldados_ejercito2[], int* cantidad_soldados_ejercito2) {
     bool ejercito1_pierde = true;
@@ -88,19 +88,19 @@ void Juego::chequearGanador(Personaje* soldados_ejercito1[], int* cantidad_solda
     }
 }
 
-int Juego::calcularTurno(float promedio_velocidad_ejercito1, float promedio_velocidad_ejercito2) {
-    int indice_ejercito = 0;
+// int Juego::calcularTurno(float promedio_velocidad_ejercito1, float promedio_velocidad_ejercito2) {
+//     int indice_ejercito = 0;
 
-    if (promedio_velocidad_ejercito1 > promedio_velocidad_ejercito2) {
-        std::cout << "Comienzan atacando los soldados del ejercito 1" << std::endl;        
-        indice_ejercito = 1;
-    }
-    else {
-        std::cout << "Comienzan atacando los soldados del ejercito 2" << std::endl;
-        indice_ejercito = 2;
-    }
-    return indice_ejercito;
-}
+//     if (promedio_velocidad_ejercito1 > promedio_velocidad_ejercito2) {
+//         std::cout << "Comienzan atacando los soldados del ejercito 1" << std::endl;        
+//         indice_ejercito = 1;
+//     }
+//     else {
+//         std::cout << "Comienzan atacando los soldados del ejercito 2" << std::endl;
+//         indice_ejercito = 2;
+//     }
+//     return indice_ejercito;
+// }
 
 void Juego::mostrarMapa() {
     mapa.mostrarCasillas();
@@ -259,7 +259,7 @@ void Juego::jugar() {
 
     mapa = Mapa(alto, ancho);
 
-    Mapa* mapa_ptr = &mapa;
+    // Mapa* mapa_ptr = &mapa;
     
     cout << "Tablero vacio" << endl;
     mostrarMapa();
@@ -275,12 +275,12 @@ void Juego::jugar() {
     cout << "Turno 0" << endl;
     mostrarMapa();
 
-    float promedio_velocidad_ejercito1 = calcularPromediosEjercito1(mapa_ptr);
-    float promedio_velocidad_ejercito2 = calcularPromediosEjercito2(mapa_ptr);
+    // float promedio_velocidad_ejercito1 = calcularPromediosEjercito1(mapa_ptr);
+    // float promedio_velocidad_ejercito2 = calcularPromediosEjercito2(mapa_ptr);
 
-    int ejercito_iniciador = calcularTurno(promedio_velocidad_ejercito1, promedio_velocidad_ejercito2);
-    if (ejercito_iniciador == 1) {cout << "Parte el ejercito 1" << endl;}
-    if (ejercito_iniciador == 2) {cout << "Parte el ejercito 2" << endl;}
+    // int ejercito_iniciador = calcularTurno(promedio_velocidad_ejercito1, promedio_velocidad_ejercito2);
+    // if (ejercito_iniciador == 1) {cout << "Parte el ejercito 1" << endl;}
+    // if (ejercito_iniciador == 2) {cout << "Parte el ejercito 2" << endl;}
 
 
     // cout << "TEST COMBATES" << endl;
