@@ -59,18 +59,18 @@ void Mapa::eliminarPersonaje(Personaje* personaje) {
 // https://es.stackoverflow.com/questions/60783/imprimir-bordes-de-una-matriz-c
 
 void Mapa::mostrarCasillas() {
-    for (int i = 0; i < alto; i++) {
+    for (int j = 0; j < alto; j++) {
         std::cout << "------";
     }
     std::cout << std::endl;
 
-    for (int j = 0; j < ancho; j++) {
+    for (int i = 0; i < ancho; i++) {
         for (int linea = 0; linea < 2; linea++) {
-            for (int i = 0; i < alto; i++) {
+            for (int j = 0; j < alto; j++) {
                 std::cout << "|";
-                if (casillas[i][j] != nullptr) {
-                    std::string nombre = casillas[i][j]->getNombre();
-                    int ejercito = casillas[i][j]->getEjercito();
+                if (casillas[j][i] != nullptr) {
+                    std::string nombre = casillas[j][i]->getNombre();
+                    int ejercito = casillas[j][i]->getEjercito();
                     int espacios_nombre = 5 - nombre.length();
                     int espacios_ejercito = 5 - std::to_string(ejercito).length();
                     int espacios_izq_nombre = espacios_nombre / 2;
@@ -94,7 +94,7 @@ void Mapa::mostrarCasillas() {
             std::cout << "|" << std::endl;
         }
 
-        for (int i = 0; i < alto; i++) {
+        for (int j = 0; j < alto; j++) {
             std::cout << "------";
         }
         std::cout << std::endl;
