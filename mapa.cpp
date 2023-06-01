@@ -49,8 +49,8 @@ void Mapa::eliminarPersonaje(Personaje* personaje) {
     int pos_y = personaje->getPosicion().getY();
 
     if (casillas[pos_x][pos_y] != nullptr) {
-        casillas[pos_x][pos_y] = nullptr;
-        std::cout << "Se ha eliminado " << personaje->getNombre() << " en la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
+        personaje->~Personaje();
+        std::cout << "Se ha eliminado " << personaje->getNombre() << personaje->getEjercito() << " en la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
     }
 }
 

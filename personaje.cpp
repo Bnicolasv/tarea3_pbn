@@ -68,7 +68,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             if (casillas[pos_ancho + 1][pos_alto - 1] == nullptr) {
                 pos -> set(pos_ancho + 1, pos_alto - 1);
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo a la izquierda" << std::endl;
-                std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                 return* pos;
             }
 
@@ -78,12 +77,10 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     if (vida > 0) {
                         pos -> set(pos_ancho + 1, pos_alto - 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo a la izquierda" << std::endl;
-                        std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                         return* pos;
                     }
                     else {
                         std::cout << this->getNombre() << this->getEjercito() << " Se muere" << std::endl;
-                        std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                         mapa.eliminarPersonaje(this);
                     }
                 }
@@ -92,7 +89,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         if (casillas[pos_ancho + 1][pos_alto] == nullptr) {
                             pos -> set(pos_ancho + 1, pos_alto);
                             std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
-                            std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                             return* pos;
                         }
                         else if (casillas[pos_ancho + 1][pos_alto] != nullptr) {
@@ -101,18 +97,15 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                 if (vida > 0) {
                                     pos -> set(pos_ancho + 1, pos_alto);
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
-                                    std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                                     return* pos;
                                 }
                                 else {
                                     std::cout << this->getNombre() << this->getEjercito() << " Se muere" << std::endl;
-                                    
                                     mapa.eliminarPersonaje(this);
                                 }
                             }
                             else if (casillas[pos_ancho + 1][pos_alto]->getEjercito() == ejercito) {
                                 std::cout << this->getNombre() << this->getEjercito() << " Se queda donde mismo" << std::endl;
-                                std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                                 return *pos;
                             }
                         }
@@ -132,7 +125,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             if (casillas[pos_ancho + 1][pos_alto + 1] == nullptr) {
             pos -> set(pos_ancho + 1, pos_alto + 1);
             std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo a la derecha" << std::endl;
-            std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
             return* pos;
             }
 
@@ -142,12 +134,10 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     if (vida > 0) {
                         pos -> set(pos_ancho + 1, pos_alto + 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo a la derecha" << std::endl;
-                        std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                         return* pos;
                     }
                     else {
                         std::cout << this->getNombre() << this->getEjercito() <<" Se muere" << std::endl;
-                        std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                         mapa.eliminarPersonaje(this);
                     }
                 }
@@ -156,7 +146,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         if (casillas[pos_ancho + 1][pos_alto] == nullptr) {
                             pos -> set(pos_ancho + 1, pos_alto);
                             std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
-                            std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                             return* pos;
                         }
                         else if (casillas[pos_ancho + 1][pos_alto] != nullptr) {
@@ -165,7 +154,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                 if (vida > 0) {
                                     pos -> set(pos_ancho + 1, pos_alto);
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
-                                    std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                                     return* pos;
                                 }
                                 else {
@@ -175,7 +163,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                             }
                             else if (casillas[pos_ancho + 1][pos_alto]->getEjercito() == ejercito) {
                                 std::cout << this->getNombre() << this->getEjercito() <<" Se queda donde mismo" << std::endl;
-                                std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                                 return *pos;
                             }
                         }
@@ -195,7 +182,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             if (casillas[pos_ancho - 1][pos_alto + 1] == nullptr) {
                 pos -> set(pos_ancho - 1, pos_alto + 1);
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba a la derecha" << std::endl;
-                std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                 return* pos;
             }
 
@@ -205,7 +191,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     if (vida > 0) {
                         pos -> set(pos_ancho - 1, pos_alto + 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba a la derecha" << std::endl;
-                        std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                         return* pos;
                     }
                     else {
@@ -218,7 +203,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         if (casillas[pos_ancho - 1][pos_alto] == nullptr) {
                             pos -> set(pos_ancho - 1, pos_alto);
                             std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
-                            std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                             return* pos;
                         }
                         else if (casillas[pos_ancho - 1][pos_alto] != nullptr) {
@@ -227,7 +211,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                 if (vida > 0) {
                                     pos -> set(pos_ancho - 1, pos_alto);
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
-                                    std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                                     return* pos;
                                 }
                                 else {
@@ -237,7 +220,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                             }
                             else if (casillas[pos_ancho - 1][pos_alto]->getEjercito() == ejercito) {
                                 std::cout << this->getNombre() << this->getEjercito() <<" Se queda donde mismo" << std::endl;
-                                std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                                 return *pos;
                             }
                         }
@@ -258,7 +240,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             if (casillas[pos_ancho - 1][pos_alto - 1] == nullptr) {
                 pos -> set(pos_ancho - 1, pos_alto - 1);
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba a la izquierda" << std::endl;
-                std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                 return* pos;
             }
 
@@ -268,7 +249,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     if (vida > 0) {
                         pos -> set(pos_ancho - 1, pos_alto - 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba a la izquierda" << std::endl;
-                        std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
+    
                         return* pos;
                     }
                     else {
@@ -281,7 +262,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         if (casillas[pos_ancho - 1][pos_alto] == nullptr) {
                             pos -> set(pos_ancho - 1, pos_alto);
                             std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
-                            std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
+        
                             return* pos;
                         }
                         else if (casillas[pos_ancho - 1][pos_alto] != nullptr) {
@@ -290,7 +271,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                 if (vida > 0) {
                                     pos -> set(pos_ancho - 1, pos_alto);
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
-                                    std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
+                
                                     return* pos;
                                 }
                                 else {
@@ -319,7 +300,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             if (casillas[pos_ancho + 1][pos_alto] == nullptr) {
                 pos -> set(pos_ancho + 1, pos_alto);
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
-                std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                 return* pos;
             }
             else if (casillas[pos_ancho + 1][pos_alto] != nullptr) {
@@ -328,7 +308,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     if (vida > 0) {
                         pos -> set(pos_ancho + 1, pos_alto);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
-                        std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
+    
                         return* pos;
                     }
                     else {
@@ -351,7 +331,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             if (casillas[pos_ancho][pos_alto + 1] == nullptr) {
                 pos -> set(pos_ancho, pos_alto + 1);
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve derecha" << std::endl;
-                std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                 return* pos;
             }
             else if (casillas[pos_ancho][pos_alto + 1] != nullptr) {
@@ -360,7 +339,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     if (vida > 0) {
                         pos -> set(pos_ancho, pos_alto + 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve derecha" << std::endl;
-                        std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
+    
                         return* pos;
                     }
                     else {
@@ -383,7 +362,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             if (casillas[pos_ancho - 1][pos_alto] == nullptr) {
                 pos -> set(pos_ancho - 1, pos_alto);
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
-                std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                 return* pos;
             }
             else if (casillas[pos_ancho - 1][pos_alto] != nullptr) {
@@ -392,7 +370,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     if (vida > 0) {
                         pos -> set(pos_ancho - 1, pos_alto);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
-                        std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
+    
                         return* pos;
                     }
                     else {
@@ -415,7 +393,6 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             if (casillas[pos_ancho][pos_alto - 1] == nullptr) {
                 pos -> set(pos_ancho, pos_alto - 1);
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve izquierda" << std::endl;
-                std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
                 return* pos;
             }
             else if (casillas[pos_ancho][pos_alto - 1] != nullptr) {
@@ -424,7 +401,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     if (vida > 0) {
                         pos -> set(pos_ancho, pos_alto - 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve izquierda" << std::endl;
-                        std::cout << this->getPosicion().getX() << this->getPosicion().getY() << std::endl;
+    
                         return* pos;
                     }
                     else {

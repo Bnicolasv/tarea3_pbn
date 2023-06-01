@@ -18,8 +18,8 @@ void Juego::chequearGanador() {
     int soldados_ejercito1_vivos = 0;
     int soldados_ejercito2_vivos = 0;
 
-    for (int i = 0; i < ancho; i++) {
-        for (int j = 0; j < alto; j++) {
+    for (int i = 0; i < alto; i++) {
+        for (int j = 0; j < ancho; j++) {
             if (casillas[i][j] != nullptr && casillas[i][j]->getEjercito() == 1 && casillas[i][j]->getVida() > 0) {
                 soldados_ejercito1_vivos++;
             }
@@ -271,37 +271,51 @@ void Juego::jugar() {
     mostrarMapa();
 
 
-    // mapa_ptr->mostrarCasillas();
     int equipo_inicial = calcularTurno();
+    cout << "------------------------------------------------------------------" << endl;
 
-    vector<vector<Personaje*>> casillas = mapa.getCasillas();
-
-    if (equipo_inicial == 1){
+    if (equipo_inicial == 1) {
         bool continuar = true;
-        while (continuar){
-            for (int i = 0; i < cantidad_de_soldados1; i++){
-                        cout << soldados_ejercito1[i]->getPosicion().getX() << soldados_ejercito1[i]->getPosicion().getY() << endl;
-                        soldados_ejercito1[i]->moverse(mapa, *this);
+        int indice_ejercito2 = 0;  
+        while (continuar) {
+            for (int i = 0; i < cantidad_de_soldados1; i++) {
+                soldados_ejercito1[i]->moverse(mapa, *this);
 
-                        
-
-
-                    } 
-            continuar = false;
+                if (indice_ejercito2 < cantidad_de_soldados2) {
+                    soldados_ejercito2[indice_ejercito2]->moverse(mapa, *this);
+                    indice_ejercito2++;
                 }
+            }
+            if (indice_ejercito2 >= cantidad_de_soldados2) {
+                continuar = false;  
+            }
         }
+    }
+
+    else {
+        bool continuar = true;
+        int indice_ejercito1 = 0;  
+        while (continuar) {
+            for (int i = 0; i < cantidad_de_soldados2; i++) {
+                soldados_ejercito2[i]->moverse(mapa, *this);
+
+                if (indice_ejercito1 < cantidad_de_soldados1) {
+                    soldados_ejercito2[indice_ejercito1]->moverse(mapa, *this);
+                    indice_ejercito1++;
+                }
+            }
+            if (indice_ejercito1 >= cantidad_de_soldados2) {
+                continuar = false;  
+            }
+        }
+    }
+
+    cout << "------------------------------------------------------------------" << endl;
+    // No se esta actualizando
+    mostrarMapa();
+    chequearGanador();
     
-                        
 
-
-    // cout << "TEST COMBATES" << endl;
-    // for (int i = 0; i < cantidad_de_soldados1; i++) {
-    //     combate(soldados_ejercito1[i], soldados_ejercito2[i]);
-    // }
-    // cout << "----------------------------------------" << endl;
-
-    // ESTO HAY QUE SACARLO PORQUE PARA CADA COMBATE SE LLAMARA A THIS
-    // SOLO SE DEBE HACER DELETE CON UN FOR DE LOS QUE QUEDEN VIVOS UNA VEZ UN EJERCITO GANE
     for (int i = 0; i < cantidad_de_soldados1; i++) {
         delete soldados_ejercito1[i];
     }
