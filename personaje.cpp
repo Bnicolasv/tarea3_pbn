@@ -3,8 +3,6 @@
 #include "personaje.h"
 #include "mapa.h"
 
-// POR AHORA > 
-
 
 Personaje::Personaje(std::string nombre, int vida, int fuerza, int velocidad, Posicion pos, int ejercito) {
     this -> nombre = nombre;
@@ -78,7 +76,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         return* pos;
                     }
                     else {
-                        delete this;
+                        mapa.eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho - 1][pos_alto + 1]->getEjercito() == ejercito) {
@@ -95,7 +93,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                     return* pos;
                                 }
                                 else {
-                                    delete this;
+                                    mapa.eliminarPersonaje(this);
                                 }
                             }
                             else if (casillas[pos_ancho][pos_alto + 1]->getEjercito() == ejercito) {
@@ -127,7 +125,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         return* pos;
                     }
                     else {
-                        delete this;
+                        mapa.eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho + 1][pos_alto + 1]->getEjercito() == ejercito) {
@@ -144,7 +142,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                     return* pos;
                                 }
                                 else {
-                                    delete this;
+                                    mapa.eliminarPersonaje(this);
                                 }
                             }
                             else if (casillas[pos_ancho][pos_alto + 1]->getEjercito() == ejercito) {
@@ -176,7 +174,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         return* pos;
                     }
                     else {
-                        delete this;
+                        mapa.eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho + 1][pos_alto - 1]->getEjercito() == ejercito) {
@@ -193,7 +191,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                     return* pos;
                                 }
                                 else {
-                                    delete this;
+                                    mapa.eliminarPersonaje(this);
                                 }
                             }
                             else if (casillas[pos_ancho][pos_alto - 1]->getEjercito() == ejercito) {
@@ -225,7 +223,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         return* pos;
                     }
                     else {
-                        delete this;
+                        mapa.eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho - 1][pos_alto - 1]->getEjercito() == ejercito) {
@@ -242,7 +240,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                     return* pos;
                                 }
                                 else {
-                                    delete this;
+                                    mapa.eliminarPersonaje(this);
                                 }
                             }
                             else if (casillas[pos_ancho][pos_alto - 1]->getEjercito() == ejercito) {
@@ -273,7 +271,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         return* pos;
                     }
                     else {
-                        delete this;
+                        mapa.eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho][pos_alto + 1]->getEjercito() == ejercito) {
@@ -298,7 +296,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         return* pos;
                     }
                     else {
-                        delete this;
+                        mapa.eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho + 1][pos_alto]->getEjercito() == ejercito) {
@@ -323,7 +321,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         return* pos;
                     }
                     else {
-                        delete this;
+                        mapa.eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho][pos_alto - 1]->getEjercito() == ejercito) {
@@ -348,7 +346,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         return* pos;
                     }
                     else {
-                        delete this;
+                        mapa.eliminarPersonaje(this);
                     }
                     }
                 else if (casillas[pos_ancho -1][pos_alto]->getEjercito() == ejercito) {
