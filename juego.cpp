@@ -12,32 +12,37 @@ using namespace std;
 void Juego::chequearGanador() {
     vector<vector<Personaje*>> casillas = mapa.getCasillas();
 
+    int ancho = mapa.getAncho();
+    int alto = mapa.getAlto();
 
-    // bool ejercito1_pierde = true;
-    // for (int i = 0; i < *cantidad_soldados_ejercito1; i++) {
-    //     if (soldados_ejercito1[i]->getVida() > 0) {
-    //         ejercito1_pierde = false;
-    //         break;
-    //     }
-    // }
+    int soldados_ejercito1_vivos = 0;
+    int soldados_ejercito2_vivos = 0;
 
-    // if (ejercito1_pierde) {
-    //     std::cout << "El ejercito 1 tiene todos sus soldados muertos. Ha ganado el ejercito 2" << std::endl;
-    //     return;
-    // }
+    for (int i = 0; i < alto; i++) {
+        for (int j = 0; j < ancho; j++) {
+            if (casillas[i][j] != nullptr && casillas[i][j]->getEjercito() == 1 && casillas[i][j]->getVida() > 0) {
+                soldados_ejercito1_vivos++;
+            }
+            else if (casillas[i][j] != nullptr && casillas[i][j]->getEjercito() == 2 && casillas[i][j]->getVida() > 0) {
+                soldados_ejercito2_vivos++;
+            }
+            else {
+                continue;
+            }
+        }
+    }
 
-    // bool ejercito2_pierde = true;
-    // for (int i = 0; i < *cantidad_soldados_ejercito2; i++) {
-    //     if (soldados_ejercito2[i]->getVida() > 0) {
-    //         ejercito2_pierde = false;
-    //         break;
-    //     }
-    // }
+    if (soldados_ejercito1_vivos == 0 && soldados_ejercito2_vivos > 0) {
+        cout << "Todos los soldados del ejercito 1 han muerto. Ha ganado el ejercito 2" << endl;
+    }
 
-    // if (ejercito2_pierde) {
-    //     std::cout << "El ejercito 2 tiene todos sus soldados muertos. Ha ganado el ejercito 1" << std::endl;
-    //     return;
-    // }
+    else if (soldados_ejercito2_vivos == 0 && soldados_ejercito1_vivos > 0) {
+        cout << "Todos los soldados del ejercito 2 han muerto. Ha ganado el ejercito 1" << endl;
+    }
+
+    else {
+        cout << "Existen soldados vivos de ambos ejercitos. La batalla continua" << endl;
+    }
 }
 
 int Juego::calcularTurno() {
@@ -103,7 +108,7 @@ void Juego::combate(Personaje *p1, Personaje *p2) {
     // Ataca primero el personaje con mayor velocidad. Si tienen la misma velocidad, parte el que tenga 
     // mayor ataque. Si tienen misma velocidad y ataque, parte el que tenga mayor vida. 
     
-    std::cout << "Comienza la pelea entre " << p1->getNombre() << " y " << p2->getNombre() << ":" << std::endl; 
+    std::cout << "Comienza la pelea entre " << p1->getNombre() << p1->getEjercito() <<" y " << p2->getNombre() << p2->getEjercito() <<":" << std::endl; 
 
     Personaje* atacante;
     Personaje* defensor;
@@ -269,7 +274,29 @@ void Juego::jugar() {
 
 
     // mapa_ptr->mostrarCasillas();
-    calcularTurno();
+    int equipo_inicial = calcularTurno();
+
+    vector<vector<Personaje*>> casillas = mapa.getCasillas();
+
+    if (equipo_inicial == 1){
+        bool continuar = true;
+        while (continuar){
+            for (int i = 0; i < alto; i++){
+                for (int j = 0; j < ancho; j++){
+                    if(casillas[i][j]->getEjercito() == equipo_inicial && casillas[i][j] != nullptr){
+                        for(int k = 0; k < cantidad_de_soldados1-17; k++){
+                                soldados_ejercito1[k]->moverse(mapa, *this);
+                            for(int l = 0; l < cantidad_de_soldados2-17; l++){
+                                soldados_ejercito2[l]->moverse(mapa, *this);
+                            }
+                        }
+
+                    } 
+                }
+            }
+        }
+    }
+                               
 
 
     // cout << "TEST COMBATES" << endl;
