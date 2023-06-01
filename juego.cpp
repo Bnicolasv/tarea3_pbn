@@ -9,84 +9,35 @@
 using namespace std;
 
 
-float Juego::calcularPromediosEjercito1(Mapa* mapa_ptr) {
-    vector<vector<Personaje*>> casillas = mapa_ptr->getCasillas();
-    
-    int alto = mapa_ptr->getAlto();
-    int ancho = mapa_ptr->getAncho();
-
-    float suma_velocidades_ejercito1 = 0;
-    int aux = 0;
-    float promedio_velocidad_ejercito1 = 0;
-
-    for (int i = 0; i < alto; i++) {
-        for (int j = 0; j < ancho; j++) {
-            if (casillas[i][j] != nullptr && casillas[i][j]->getEjercito() == 1) {
-                aux++;
-                suma_velocidades_ejercito1 += casillas[i][j]->getVelocidad();
-            }
-            else {
-                continue;
-            }
-        }
-    }
-
-    promedio_velocidad_ejercito1 = suma_velocidades_ejercito1 / aux;   
-    return promedio_velocidad_ejercito1;
-}
-
-float Juego::calcularPromediosEjercito2(Mapa* mapa_ptr) {
-    vector<vector<Personaje*>> casillas = mapa_ptr->getCasillas();
-    
-    int ancho = mapa_ptr->getAncho();
-    int alto = mapa_ptr->getAlto();
-
-    float suma_velocidades_ejercito2 = 0;
-    int aux = 0;
-    float promedio_velocidad_ejercito2 = 0;
-
-    for (int i = 0; i < alto; i++) {
-        for (int j = 0; j < ancho; j++) {
-            if (casillas[i][j] != nullptr && casillas[i][j]->getEjercito() == 2) {
-                aux++;
-                suma_velocidades_ejercito2 += casillas[i][j]->getVelocidad();
-            }
-            else {
-                continue;
-            }
-        }
-    }
-
-    promedio_velocidad_ejercito2 = suma_velocidades_ejercito2 / aux;   
-    return promedio_velocidad_ejercito2;
-}
-
 void Juego::chequearGanador() {
-    bool ejercito1_pierde = true;
-    for (int i = 0; i < *cantidad_soldados_ejercito1; i++) {
-        if (soldados_ejercito1[i]->getVida() > 0) {
-            ejercito1_pierde = false;
-            break;
-        }
-    }
+    vector<vector<Personaje*>> casillas = mapa.getCasillas();
 
-    if (ejercito1_pierde) {
-        std::cout << "El ejercito 1 tiene todos sus soldados muertos. Ha ganado el ejercito 2" << std::endl;
-        return;
-    }
 
-    bool ejercito2_pierde = true;
-    for (int i = 0; i < *cantidad_soldados_ejercito2; i++) {
-        if (soldados_ejercito2[i]->getVida() > 0) {
-            ejercito2_pierde = false;
-            break;
-        }
-    }
+    // bool ejercito1_pierde = true;
+    // for (int i = 0; i < *cantidad_soldados_ejercito1; i++) {
+    //     if (soldados_ejercito1[i]->getVida() > 0) {
+    //         ejercito1_pierde = false;
+    //         break;
+    //     }
+    // }
 
-    if (ejercito2_pierde) {
-        std::cout << "El ejercito 2 tiene todos sus soldados muertos. Ha ganado el ejercito 1" << std::endl;
-        return;
-    }
+    // if (ejercito1_pierde) {
+    //     std::cout << "El ejercito 1 tiene todos sus soldados muertos. Ha ganado el ejercito 2" << std::endl;
+    //     return;
+    // }
+
+    // bool ejercito2_pierde = true;
+    // for (int i = 0; i < *cantidad_soldados_ejercito2; i++) {
+    //     if (soldados_ejercito2[i]->getVida() > 0) {
+    //         ejercito2_pierde = false;
+    //         break;
+    //     }
+    // }
+
+    // if (ejercito2_pierde) {
+    //     std::cout << "El ejercito 2 tiene todos sus soldados muertos. Ha ganado el ejercito 1" << std::endl;
+    //     return;
+    // }
 }
 
 int Juego::calcularTurno() {
