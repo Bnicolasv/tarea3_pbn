@@ -283,20 +283,19 @@ void Juego::jugar() {
         while (continuar){
             for (int i = 0; i < alto; i++){
                 for (int j = 0; j < ancho; j++){
-                    if(casillas[i][j]->getEjercito() == equipo_inicial && casillas[i][j] != nullptr){
-                        for(int k = 0; k < cantidad_de_soldados1-17; k++){
-                                soldados_ejercito1[k]->moverse(mapa, *this);
-                            for(int l = 0; l < cantidad_de_soldados2-17; l++){
-                                soldados_ejercito2[l]->moverse(mapa, *this);
-                            }
-                        }
+                        soldados_ejercito1[j]->moverse(mapa, *this);
+                        soldados_ejercito2[i]->moverse(mapa, *this);
+
+                        
+
 
                     } 
                 }
-            }
+            continuar = false;
         }
     }
-                               
+    
+    mostrarMapa();                       
 
 
     // cout << "TEST COMBATES" << endl;
