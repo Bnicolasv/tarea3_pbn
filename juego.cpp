@@ -110,7 +110,7 @@ void Juego::combate(Personaje *p1, Personaje *p2) {
     
     std::cout << "Comienza la pelea entre " << p1->getNombre() << p1->getEjercito() <<" y " << p2->getNombre() << p2->getEjercito() <<":" << std::endl; 
 
-    Personaje* atacante;
+    Personaje* atacante = nullptr;
     Personaje* defensor;
     Personaje* ganador;
 
@@ -276,46 +276,73 @@ void Juego::jugar() {
     int equipo_inicial = calcularTurno();
     cout << "------------------------------------------------------------------" << endl;
 
-    if (equipo_inicial == 1) {
-        bool continuar = true;
-        int indice_ejercito2 = 0;  
-        while (continuar) {
+    vector<vector<Personaje*>> casillas = mapa.getCasillas();
 
-            for (int i = 0; i < cantidad_de_soldados1; i++) {
-                cout << "Turno: " << i << endl;
-                soldados_ejercito1[i]->moverse(mapa, *this);
+    
 
-                if (indice_ejercito2 < cantidad_de_soldados2) {
-                    soldados_ejercito2[indice_ejercito2]->moverse(mapa, *this);
-                    indice_ejercito2++;
-                }
-                cout << endl;
-            }
-            if (indice_ejercito2 >= cantidad_de_soldados2) {
-                continuar = false;  
-            }
+
+
+    for (int i = 0; i < ancho; i++){
+        for (int j = 0; j < alto; j++){
+            if(casillas[i][j] != nullptr){
+                casillas[i][j]->mapa = &mapa;
+                // cout << casillas[i][j]->mapa << endl;
+        }
+            //  else{
+            //     // cout << "Es un puntero nulo" << endl;
+            // //     casillas[i][j]->mapa = nullptr;
+            // }
         }
     }
 
-    else {
-        bool continuar = true;
-        int indice_ejercito1 = 0;  
-        while (continuar) {
-            for (int i = 0; i < cantidad_de_soldados2; i++) {
-                soldados_ejercito2[i]->moverse(mapa, *this);
 
-                if (indice_ejercito1 < cantidad_de_soldados1) {
-                    soldados_ejercito2[indice_ejercito1]->moverse(mapa, *this);
-                    indice_ejercito1++;
-                }
-            }
-            if (indice_ejercito1 >= cantidad_de_soldados2) {
-                continuar = false;  
+
+     if (equipo_inicial == 1){
+        bool continuar = true;
+        while (continuar){
+            for (int i = 0; i < ancho; i++){
+                cout << "Entra en este ciclo1" << endl;
+                for (int j = 0; j < alto; j++){
+                        cout << "Entra en este ciclo2" << endl;
+                        // cout << casillas[i][j]->getPosicion().getX() << casillas[i][j]->getPosicion().getY() << endl;
+                        if(casillas[i][j] != nullptr){
+                            if (casillas[i][j]->getEjercito() == 1){
+                                cout << casillas[i][j]->getPosicion().getX() << casillas[i][j]->getPosicion().getY() << endl;
+                                casillas[i][j]->moverse();
+                            }
+                        }   
+                        else{
+                            continue;
+                        }
+                    }
+
+                } 
+            continuar = false;
             }
         }
-    }
+        
+
+    // else {
+    //     bool continuar = true;
+    //     int indice_ejercito1 = 0;  
+    //     while (continuar) {
+    //         for (int i = 0; i < cantidad_de_soldados2; i++) {
+    //             soldados_ejercito2[i]->moverse();
+
+    //             if (indice_ejercito1 < cantidad_de_soldados1) {
+    //                 soldados_ejercito2[indice_ejercito1]->moverse();
+    //                 indice_ejercito1++;
+    //             }
+    //         }
+    //         if (indice_ejercito1 >= cantidad_de_soldados2) {
+    //             continuar = false;  
+    //         }
+    //     }
+    // }
 
     cout << "------------------------------------------------------------------" << endl;
+
+    mapa.mostrarCasillas();
 
     // mostrarMapa();
     chequearGanador();    
