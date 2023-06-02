@@ -309,6 +309,8 @@ void Juego::jugar() {
                             if (casillas[i][j]->getEjercito() == 1){
                                 cout << casillas[i][j]->getPosicion().getX() << casillas[i][j]->getPosicion().getY() << endl;
                                 casillas[i][j]->moverse();
+                                mapa.agregarPersonaje(casillas[i][j]);
+                            
                             }
                         }   
                         else{
