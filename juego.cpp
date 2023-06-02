@@ -185,7 +185,7 @@ void Juego::combate(Personaje *p1, Personaje *p2) {
 }
 
 void Juego::jugar() {
-    ifstream archivo("soldados_short.txt");
+    ifstream archivo("soldados.txt");
     string linea;
     getline(archivo, linea);
 
@@ -254,7 +254,6 @@ void Juego::jugar() {
     archivo.close();
 
     mapa = Mapa(alto, ancho);
-    // Mapa* mapa_ptr = &mapa;
     
     cout << endl;
     cout << "Tablero vacio" << endl;
@@ -272,15 +271,10 @@ void Juego::jugar() {
     cout << "Turno 0" << endl;
     mostrarMapa();
 
-
     int equipo_inicial = calcularTurno();
     cout << "------------------------------------------------------------------" << endl;
 
     vector<vector<Personaje*>> casillas = mapa.getCasillas();
-
-    
-
-
 
     for (int i = 0; i < ancho; i++){
         for (int j = 0; j < alto; j++){
@@ -291,64 +285,43 @@ void Juego::jugar() {
         }
     }
 
+    int turno = 1;
     if (equipo_inicial == 1){
         bool continuar = true;
         while (continuar){
             for (int i = 0; i < ancho; i++){
                 for (int j = 0; j < alto; j++){
-                        if(casillas[i][j] != nullptr){
-                            if (casillas[i][j]->getEjercito() == 1){
-                                // cout << casillas[i][j]->getPosicion().getX() << casillas[i][j]->getPosicion().getY() << endl;
-                                // cout << nuevaPosicionX << "," << nuevaPosicionY << endl;
-                                Personaje* personajeActual = casillas[i][j];
-                                Personaje* personajeActualCopia = new Personaje;
-
-                                *personajeActualCopia = *personajeActual;
-
-                                personajeActualCopia->moverse();
-
-                                // Posicion pos_nueva = casillas[i][j]->moverse();
-                                // int pos_nuevaX = pos_nueva.getX();
-                                // int pos_nuevaY = pos_nueva.getY();
-                                //Hacer una copia del puntero
-                                mapa.agregarPersonaje(personajeActualCopia);
-                                delete personajeActual;
-
-
-                                // mapa.agregarPersonaje(casillas[pos_nuevaX][pos_nuevaY]);
-                                
-                                continue;
+                        if (casillas[i][j] != nullptr) {
+                            cout << "Turno " << turno << endl;
+                            if (casillas[i][j]->getEjercito() == 1 || casillas[i][j]->getEjercito() == 2){
+                                casillas[i][j]->moverse();
+                                mapa.agregarPersonaje(casillas[i][j]);
+                                mapa.eliminarPersonaje(casillas[i][j]);
                             }
-            
+                            mostrarMapa();
+                            turno++;
+                            cout << endl;
                         }   
-                        else{
+                        else {
                             continue;
                         }
                     }
                 } 
             continuar = false;
+            chequearGanador();  
             }
         }
         
-
-
-
-        
-
-
     cout << "------------------------------------------------------------------" << endl;
+        
+    for (int i = 0; i < cantidad_de_soldados1; i++) {
+        if (soldados_ejercito1[i] != nullptr) {
+            delete soldados_ejercito1[i];
+        }
+    }
 
-    mapa.mostrarCasillas();
-
-    // mostrarMapa();
-    chequearGanador();    
-
-    // for (int i = 0; i < cantidad_de_soldados1; i++) {
-    //     delete soldados_ejercito1[i];
-    // }
-
-    // for (int i = 0; i < cantidad_de_soldados2; i++) {
-    //     delete soldados_ejercito2[i];
-    // }
+    for (int i = 0; i < cantidad_de_soldados2; i++) {
+        delete soldados_ejercito2[i];
+    }
 }
 

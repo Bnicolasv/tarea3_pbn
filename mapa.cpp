@@ -49,9 +49,7 @@ void Mapa::eliminarPersonaje(Personaje* personaje) {
         int pos_x = personaje->getPosicion().getX();
         int pos_y = personaje->getPosicion().getY();
 
-        casillas[pos_x][pos_y] = nullptr;
-        std::cout << "Se ha eliminado " << personaje->getNombre() << personaje->getEjercito() << " en la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
-    
+        casillas[pos_x][pos_y] = nullptr;    
 }
 
 // Inspirado de https://en.cppreference.com/w/cpp/io/manip
