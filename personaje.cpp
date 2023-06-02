@@ -48,12 +48,12 @@ Posicion Personaje::moverse() {
     int pos_ancho = pos->getX();
     int pos_alto = pos->getY();
     
-    int casilla_central_ancho = mapa->casillaCentralX(); 
-    int casilla_central_alto = mapa->casillaCentralY();
+    int casilla_central_ancho = mapa->casillaCentralY(); 
+    int casilla_central_alto = mapa->casillaCentralX();
     int ejercito = this->ejercito;
 
     std::vector<std::vector<Personaje*> > casillas = mapa->getCasillas();
-
+    
     if (pos_ancho == casilla_central_ancho && pos_alto == casilla_central_alto) {
         return *pos;
     }

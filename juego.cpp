@@ -301,13 +301,13 @@ void Juego::jugar() {
         bool continuar = true;
         while (continuar){
             for (int i = 0; i < ancho; i++){
-                cout << "Entra en este ciclo1" << endl;
+                // cout << "Entra en este ciclo1" << endl;
                 for (int j = 0; j < alto; j++){
-                        cout << "Entra en este ciclo2" << endl;
+                        // cout << "Entra en este ciclo2" << endl;
                         // cout << casillas[i][j]->getPosicion().getX() << casillas[i][j]->getPosicion().getY() << endl;
                         if(casillas[i][j] != nullptr){
                             if (casillas[i][j]->getEjercito() == 1){
-                                cout << casillas[i][j]->getPosicion().getX() << casillas[i][j]->getPosicion().getY() << endl;
+                                // cout << casillas[i][j]->getPosicion().getX() << casillas[i][j]->getPosicion().getY() << endl;
                                 casillas[i][j]->moverse();
                                 mapa.agregarPersonaje(casillas[i][j]);
                             
