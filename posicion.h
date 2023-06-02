@@ -2,7 +2,7 @@
 
 #ifndef POSICION
 #define POSICION
-// alto x ancho
+
 class Posicion {
     public:
         Posicion(int x, int y);

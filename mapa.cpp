@@ -66,9 +66,7 @@ void Mapa::mostrarCasillas() {
         for (int linea = 0; linea < 2; linea++) {
             for (int j = 0; j < ancho; j++) {
                 std::cout << "|";
-            
-            
-            
+                
                 if (casillas[i][j] != nullptr) {
                     std::string nombre = casillas[i][j]->getNombre();
                     int ejercito = casillas[i][j]->getEjercito();

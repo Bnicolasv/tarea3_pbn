@@ -3,7 +3,6 @@
 #include "personaje.h"
 #include "mapa.h"
 
-
 Personaje::Personaje(std::string nombre, int vida, int fuerza, int velocidad, Posicion pos, int ejercito) {
     this -> nombre = nombre;
     this -> vida = vida;
@@ -57,7 +56,6 @@ Posicion Personaje::moverse() {
     if (pos_ancho == casilla_central_ancho && pos_alto == casilla_central_alto) {
         return *pos;
     }
-    //ANCHO ES EN VERTICAL Y ALTO ES EN HORIZONTAL
 
     // Primer cuadrante (arriba a la derecha del centro) -> ((pos_ancho - casilla_central_ancho < 0) && (pos_alto - casilla_central_alto > 0))
     else if ((pos_ancho - casilla_central_ancho < 0) && (pos_alto - casilla_central_alto > 0)) {
@@ -65,7 +63,6 @@ Posicion Personaje::moverse() {
         if ((pos_ancho + 1 != casilla_central_ancho) && (pos_alto - 1 != casilla_central_alto)) {
             if (casillas[pos_ancho + 1][pos_alto - 1] == nullptr) {
                 pos -> set(pos_ancho + 1, pos_alto - 1);
-                
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo a la izquierda" << std::endl;
                 return* pos;
             }
@@ -75,7 +72,6 @@ Posicion Personaje::moverse() {
                     juego->combate(casillas[pos_ancho + 1][pos_alto - 1], this); // El combate actualizara this -> vida
                     if (vida > 0) {
                         pos -> set(pos_ancho + 1, pos_alto - 1);
-                        
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo a la izquierda" << std::endl;
                         return* pos;
                     }
@@ -88,7 +84,6 @@ Posicion Personaje::moverse() {
                     if (pos_alto != casilla_central_alto) {
                         if (casillas[pos_ancho + 1][pos_alto] == nullptr) {
                             pos -> set(pos_ancho + 1, pos_alto);
-                            
                             std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
                             return* pos;
                         }
@@ -97,7 +92,6 @@ Posicion Personaje::moverse() {
                                 juego->combate(casillas[pos_ancho + 1][pos_alto], this); // El combate actualizara this -> vida
                                 if (vida > 0) {
                                     pos -> set(pos_ancho + 1, pos_alto);
-                                    
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
                                     return* pos;
                                 }
@@ -137,7 +131,6 @@ Posicion Personaje::moverse() {
                     juego->combate(casillas[pos_ancho + 1][pos_alto + 1], this); // El combate actualizara this -> vida
                     if (vida > 0) {
                         pos -> set(pos_ancho + 1, pos_alto + 1);
-                        
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo a la derecha" << std::endl;
                         return* pos;
                     }
@@ -150,7 +143,6 @@ Posicion Personaje::moverse() {
                     if (pos_alto != casilla_central_alto) {
                         if (casillas[pos_ancho + 1][pos_alto] == nullptr) {
                             pos -> set(pos_ancho + 1, pos_alto);
-                            
                             std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
                             return* pos;
                         }
@@ -159,7 +151,6 @@ Posicion Personaje::moverse() {
                                 juego->combate(casillas[pos_ancho + 1][pos_alto], this); // El combate actualizara this -> vida
                                 if (vida > 0) {
                                     pos -> set(pos_ancho + 1, pos_alto);
-                                    
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
                                     return* pos;
                                 }
@@ -188,7 +179,6 @@ Posicion Personaje::moverse() {
         if ((pos_ancho - 1 != casilla_central_ancho) && (pos_alto + 1 != casilla_central_alto)) {
             if (casillas[pos_ancho - 1][pos_alto + 1] == nullptr) {
                 pos -> set(pos_ancho - 1, pos_alto + 1);
-                
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba a la derecha" << std::endl;
                 return* pos;
             }
@@ -198,7 +188,6 @@ Posicion Personaje::moverse() {
                     juego->combate(casillas[pos_ancho - 1][pos_alto + 1], this); // El combate actualizara this -> vida
                     if (vida > 0) {
                         pos -> set(pos_ancho - 1, pos_alto + 1);
-                        
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba a la derecha" << std::endl;
                         return* pos;
                     }
@@ -211,7 +200,6 @@ Posicion Personaje::moverse() {
                     if (pos_alto != casilla_central_alto) {
                         if (casillas[pos_ancho - 1][pos_alto] == nullptr) {
                             pos -> set(pos_ancho - 1, pos_alto);
-                            
                             std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
                             return* pos;
                         }
@@ -220,7 +208,6 @@ Posicion Personaje::moverse() {
                                 juego->combate(casillas[pos_ancho - 1][pos_alto], this); // El combate actualizara this -> vida
                                 if (vida > 0) {
                                     pos -> set(pos_ancho - 1, pos_alto);
-                                    
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
                                     return* pos;
                                 }
@@ -250,7 +237,6 @@ Posicion Personaje::moverse() {
         if ((pos_ancho - 1 != casilla_central_ancho) && (pos_alto - 1 != casilla_central_alto)) {
             if (casillas[pos_ancho - 1][pos_alto - 1] == nullptr) {
                 pos -> set(pos_ancho - 1, pos_alto - 1);
-                
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba a la izquierda" << std::endl;
                 return* pos;
             }
@@ -260,9 +246,7 @@ Posicion Personaje::moverse() {
                     juego->combate(casillas[pos_ancho - 1][pos_alto - 1], this); // El combate actualizara this -> vida
                     if (vida > 0) {
                         pos -> set(pos_ancho - 1, pos_alto - 1);
-                        
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba a la izquierda" << std::endl;
-    
                         return* pos;
                     }
                     else {
@@ -274,9 +258,7 @@ Posicion Personaje::moverse() {
                     if (pos_alto != casilla_central_alto) {
                         if (casillas[pos_ancho - 1][pos_alto] == nullptr) {
                             pos -> set(pos_ancho - 1, pos_alto);
-                            
                             std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
-        
                             return* pos;
                         }
                         else if (casillas[pos_ancho - 1][pos_alto] != nullptr) {
@@ -284,9 +266,7 @@ Posicion Personaje::moverse() {
                                 juego->combate(casillas[pos_ancho - 1][pos_alto], this); // El combate actualizara this -> vida
                                 if (vida > 0) {
                                     pos -> set(pos_ancho - 1, pos_alto);
-                                    
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
-                
                                     return* pos;
                                 }
                                 else {
@@ -314,7 +294,6 @@ Posicion Personaje::moverse() {
         if (pos_ancho + 1 != casilla_central_ancho) {
             if (casillas[pos_ancho + 1][pos_alto] == nullptr) {
                 pos -> set(pos_ancho + 1, pos_alto);
-                
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
                 return* pos;
             }
@@ -323,9 +302,7 @@ Posicion Personaje::moverse() {
                     juego->combate(casillas[pos_ancho + 1][pos_alto], this); 
                     if (vida > 0) {
                         pos -> set(pos_ancho + 1, pos_alto);
-                        
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
-    
                         return* pos;
                     }
                     else {
@@ -347,7 +324,6 @@ Posicion Personaje::moverse() {
         if (pos_alto + 1 != casilla_central_alto) {
             if (casillas[pos_ancho][pos_alto + 1] == nullptr) {
                 pos -> set(pos_ancho, pos_alto + 1);
-                
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve derecha" << std::endl;
                 return* pos;
             }
@@ -356,9 +332,7 @@ Posicion Personaje::moverse() {
                     juego->combate(casillas[pos_ancho][pos_alto + 1], this); 
                     if (vida > 0) {
                         pos -> set(pos_ancho, pos_alto + 1);
-                        
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve derecha" << std::endl;
-    
                         return* pos;
                     }
                     else {
@@ -380,7 +354,6 @@ Posicion Personaje::moverse() {
         if (pos_ancho - 1 != casilla_central_ancho) {
             if (casillas[pos_ancho - 1][pos_alto] == nullptr) {
                 pos -> set(pos_ancho - 1, pos_alto);
-                
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
                 return* pos;
             }
@@ -389,9 +362,7 @@ Posicion Personaje::moverse() {
                     juego->combate(casillas[pos_ancho - 1][pos_alto], this); 
                     if (vida > 0) {
                         pos -> set(pos_ancho - 1, pos_alto);
-                        
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
-    
                         return* pos;
                     }
                     else {
@@ -413,7 +384,6 @@ Posicion Personaje::moverse() {
         if (pos_alto - 1 != casilla_central_alto) {
             if (casillas[pos_ancho][pos_alto - 1] == nullptr) {
                 pos -> set(pos_ancho, pos_alto - 1);
-                
                 std::cout << this->getNombre() << this->getEjercito() <<" Se mueve izquierda" << std::endl;
                 return* pos;
             }
@@ -422,9 +392,7 @@ Posicion Personaje::moverse() {
                     juego->combate(casillas[pos_ancho][pos_alto - 1], this); 
                     if (vida > 0) {
                         pos -> set(pos_ancho, pos_alto - 1);
-                        
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve izquierda" << std::endl;
-    
                         return* pos;
                     }
                     else {

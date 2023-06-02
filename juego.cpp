@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 void Juego::chequearGanador() {
     vector<vector<Personaje*>> casillas = mapa.getCasillas();
 
@@ -86,7 +85,6 @@ int Juego::calcularTurno() {
     }
 
     promedio_velocidad_ejercito2 = suma_velocidades_ejercito2 / aux2;   
-    
 
     int indice_ejercito = 0;
     if (promedio_velocidad_ejercito1 > promedio_velocidad_ejercito2) {
@@ -280,7 +278,6 @@ void Juego::jugar() {
         for (int j = 0; j < alto; j++){
             if(casillas[i][j] != nullptr){
                 casillas[i][j]->mapa = &mapa;
-                // cout << casillas[i][j]->mapa << endl;
             }
         }
     }
@@ -324,4 +321,3 @@ void Juego::jugar() {
         delete soldados_ejercito2[i];
     }
 }
-
