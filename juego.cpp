@@ -308,6 +308,33 @@ void Juego::jugar() {
             chequearGanador();  
             }
         }
+    
+    if (equipo_inicial == 2){
+    bool continuar = true;
+    while (continuar){
+        for (int i = 0; i < ancho; i++){
+            for (int j = 0; j < alto; j++){
+                    if (casillas[i][j] != nullptr) {
+                        cout << "Turno " << turno << endl;
+                        if (casillas[i][j]->getEjercito() == 1 || casillas[i][j]->getEjercito() == 2){
+                            casillas[i][j]->moverse();
+                            mapa.agregarPersonaje(casillas[i][j]);
+                            mapa.eliminarPersonaje(casillas[i][j]);
+                        }
+                        mostrarMapa();
+                        turno++;
+                        cout << endl;
+                    }   
+                    else {
+                        continue;
+                    }
+                }
+            } 
+        continuar = false;
+        chequearGanador();  
+        }
+    }
+
         
     cout << "------------------------------------------------------------------" << endl;
         
