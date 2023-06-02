@@ -171,8 +171,8 @@ void Juego::combate(Personaje *p1, Personaje *p2) {
     // Una vez que ya se sabe quien ataca y quien defiende, comienzan a pegarse hasta que uno de ellos pierda
     while (atacante->getVida() > 0 && defensor->getVida() > 0) {
         defensor->recibirAtaque(atacante);
-        std::cout << atacante->getNombre() << " inflinge " << atacante->ataque() << " de dano a ";
-        std::cout << defensor->getNombre() << ", vida restante: " << defensor->getVida() << std::endl;
+        std::cout << atacante->getNombre() << atacante->getEjercito() << " inflinge " << atacante->ataque() << " de dano a ";
+        std::cout << defensor->getNombre() << defensor->getEjercito() << ", vida restante: " << defensor->getVida() << std::endl;
 
         // https://www.geeksforgeeks.org/swap-in-cpp/
         std::swap(atacante, defensor);
@@ -280,13 +280,16 @@ void Juego::jugar() {
         bool continuar = true;
         int indice_ejercito2 = 0;  
         while (continuar) {
+
             for (int i = 0; i < cantidad_de_soldados1; i++) {
+                cout << "Turno: " << i << endl;
                 soldados_ejercito1[i]->moverse(mapa, *this);
 
                 if (indice_ejercito2 < cantidad_de_soldados2) {
                     soldados_ejercito2[indice_ejercito2]->moverse(mapa, *this);
                     indice_ejercito2++;
                 }
+                cout << endl;
             }
             if (indice_ejercito2 >= cantidad_de_soldados2) {
                 continuar = false;  
@@ -313,10 +316,9 @@ void Juego::jugar() {
     }
 
     cout << "------------------------------------------------------------------" << endl;
-    // No se esta actualizando
-    mostrarMapa();
-    chequearGanador();
-    
+
+    // mostrarMapa();
+    chequearGanador();    
 
     for (int i = 0; i < cantidad_de_soldados1; i++) {
         delete soldados_ejercito1[i];
