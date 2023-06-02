@@ -45,13 +45,13 @@ void Mapa::agregarPersonaje(Personaje* personaje) {
 }
 
 void Mapa::eliminarPersonaje(Personaje* personaje) {
-    int pos_x = personaje->getPosicion().getX();
-    int pos_y = personaje->getPosicion().getY();
-
-    if (casillas[pos_x][pos_y] != nullptr) {
         personaje->~Personaje();
+        int pos_x = personaje->getPosicion().getX();
+        int pos_y = personaje->getPosicion().getY();
+
+        casillas[pos_x][pos_y] = nullptr;
         std::cout << "Se ha eliminado " << personaje->getNombre() << personaje->getEjercito() << " en la posicion " << personaje->getPosicion().getX() << "," << personaje->getPosicion().getY() << std::endl;
-    }
+    
 }
 
 // Inspirado de https://en.cppreference.com/w/cpp/io/manip
@@ -68,6 +68,9 @@ void Mapa::mostrarCasillas() {
         for (int linea = 0; linea < 2; linea++) {
             for (int j = 0; j < ancho; j++) {
                 std::cout << "|";
+            
+            
+            
                 if (casillas[i][j] != nullptr) {
                     std::string nombre = casillas[i][j]->getNombre();
                     int ejercito = casillas[i][j]->getEjercito();
