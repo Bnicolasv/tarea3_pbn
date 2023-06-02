@@ -10,7 +10,7 @@ class Personaje {
         ~Personaje();
         Personaje();
 
-        Posicion moverse(Mapa mapa, Juego juego);
+        Posicion moverse();
         void recibirAtaque(Personaje* enemigo);
         std::string getNombre() const;
         int getVida() const;
@@ -18,6 +18,8 @@ class Personaje {
         int getVelocidad() const;
         Posicion getPosicion() const;
         int getEjercito() const;
+        Mapa* mapa;
+        Juego* juego;
 
     private:
         std::string nombre;

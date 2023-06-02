@@ -44,15 +44,15 @@ void Personaje::recibirAtaque(Personaje* enemigo) {
     vida -= enemigo -> ataque();
 }
 
-Posicion Personaje::moverse(Mapa mapa, Juego juego) { 
+Posicion Personaje::moverse() { 
     int pos_ancho = pos->getX();
     int pos_alto = pos->getY();
     
-    int casilla_central_ancho = mapa.casillaCentralX(); 
-    int casilla_central_alto = mapa.casillaCentralY();
+    int casilla_central_ancho = mapa->casillaCentralX(); 
+    int casilla_central_alto = mapa->casillaCentralY();
     int ejercito = this->ejercito;
 
-    std::vector<std::vector<Personaje*> > casillas = mapa.getCasillas();
+    std::vector<std::vector<Personaje*> > casillas = mapa->getCasillas();
 
     if (pos_ancho == casilla_central_ancho && pos_alto == casilla_central_alto) {
         return *pos;
@@ -71,7 +71,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
 
             else if (casillas[pos_ancho + 1][pos_alto - 1] != nullptr) {
                 if (casillas[pos_ancho + 1][pos_alto - 1]->getEjercito() != ejercito) {
-                    juego.combate(casillas[pos_ancho + 1][pos_alto - 1], this); // El combate actualizara this -> vida
+                    juego->combate(casillas[pos_ancho + 1][pos_alto - 1], this); // El combate actualizara this -> vida
                     if (vida > 0) {
                         pos -> set(pos_ancho + 1, pos_alto - 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo a la izquierda" << std::endl;
@@ -79,7 +79,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     }
                     else {
                         std::cout << this->getNombre() << this->getEjercito() << " Se muere" << std::endl;
-                        mapa.eliminarPersonaje(this);
+                        mapa->eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho + 1][pos_alto - 1]->getEjercito() == ejercito) {
@@ -91,7 +91,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         }
                         else if (casillas[pos_ancho + 1][pos_alto] != nullptr) {
                             if (casillas[pos_ancho + 1][pos_alto]->getEjercito() != ejercito) {
-                                juego.combate(casillas[pos_ancho + 1][pos_alto], this); // El combate actualizara this -> vida
+                                juego->combate(casillas[pos_ancho + 1][pos_alto], this); // El combate actualizara this -> vida
                                 if (vida > 0) {
                                     pos -> set(pos_ancho + 1, pos_alto);
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
@@ -99,7 +99,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                 }
                                 else {
                                     std::cout << this->getNombre() << this->getEjercito() << " Se muere" << std::endl;
-                                    mapa.eliminarPersonaje(this);
+                                    mapa->eliminarPersonaje(this);
                                 }
                             }
                             else if (casillas[pos_ancho + 1][pos_alto]->getEjercito() == ejercito) {
@@ -128,7 +128,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
 
             else if (casillas[pos_ancho + 1][pos_alto + 1] != nullptr) {
                 if (casillas[pos_ancho + 1][pos_alto + 1]->getEjercito() != ejercito) {
-                    juego.combate(casillas[pos_ancho + 1][pos_alto + 1], this); // El combate actualizara this -> vida
+                    juego->combate(casillas[pos_ancho + 1][pos_alto + 1], this); // El combate actualizara this -> vida
                     if (vida > 0) {
                         pos -> set(pos_ancho + 1, pos_alto + 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo a la derecha" << std::endl;
@@ -136,7 +136,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     }
                     else {
                         std::cout << this->getNombre() << this->getEjercito() <<" Se muere" << std::endl;
-                        mapa.eliminarPersonaje(this);
+                        mapa->eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho + 1][pos_alto + 1]->getEjercito() == ejercito) {
@@ -148,7 +148,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         }
                         else if (casillas[pos_ancho + 1][pos_alto] != nullptr) {
                             if (casillas[pos_ancho + 1][pos_alto]->getEjercito() != ejercito) {
-                                juego.combate(casillas[pos_ancho + 1][pos_alto], this); // El combate actualizara this -> vida
+                                juego->combate(casillas[pos_ancho + 1][pos_alto], this); // El combate actualizara this -> vida
                                 if (vida > 0) {
                                     pos -> set(pos_ancho + 1, pos_alto);
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
@@ -156,7 +156,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                 }
                                 else {
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se muere" << std::endl;
-                                    mapa.eliminarPersonaje(this);
+                                    mapa->eliminarPersonaje(this);
                                 }
                             }
                             else if (casillas[pos_ancho + 1][pos_alto]->getEjercito() == ejercito) {
@@ -185,7 +185,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
 
             else if (casillas[pos_ancho - 1][pos_alto + 1] != nullptr) {
                 if (casillas[pos_ancho - 1][pos_alto + 1]->getEjercito() != ejercito) {
-                    juego.combate(casillas[pos_ancho - 1][pos_alto + 1], this); // El combate actualizara this -> vida
+                    juego->combate(casillas[pos_ancho - 1][pos_alto + 1], this); // El combate actualizara this -> vida
                     if (vida > 0) {
                         pos -> set(pos_ancho - 1, pos_alto + 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba a la derecha" << std::endl;
@@ -193,7 +193,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     }
                     else {
                         std::cout << this->getNombre() << this->getEjercito() <<" Se muere" << std::endl;
-                        mapa.eliminarPersonaje(this);
+                        mapa->eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho - 1][pos_alto + 1]->getEjercito() == ejercito) {
@@ -205,7 +205,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         }
                         else if (casillas[pos_ancho - 1][pos_alto] != nullptr) {
                             if (casillas[pos_ancho - 1][pos_alto]->getEjercito() != ejercito) {
-                                juego.combate(casillas[pos_ancho - 1][pos_alto], this); // El combate actualizara this -> vida
+                                juego->combate(casillas[pos_ancho - 1][pos_alto], this); // El combate actualizara this -> vida
                                 if (vida > 0) {
                                     pos -> set(pos_ancho - 1, pos_alto);
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
@@ -213,7 +213,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                 }
                                 else {
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se muere" << std::endl;
-                                    mapa.eliminarPersonaje(this);
+                                    mapa->eliminarPersonaje(this);
                                 }
                             }
                             else if (casillas[pos_ancho - 1][pos_alto]->getEjercito() == ejercito) {
@@ -243,7 +243,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
 
             else if (casillas[pos_ancho - 1][pos_alto - 1] != nullptr) {
                 if (casillas[pos_ancho - 1][pos_alto - 1]->getEjercito() != ejercito) {
-                    juego.combate(casillas[pos_ancho - 1][pos_alto - 1], this); // El combate actualizara this -> vida
+                    juego->combate(casillas[pos_ancho - 1][pos_alto - 1], this); // El combate actualizara this -> vida
                     if (vida > 0) {
                         pos -> set(pos_ancho - 1, pos_alto - 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba a la izquierda" << std::endl;
@@ -252,7 +252,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     }
                     else {
                         std::cout << this->getNombre() << this->getEjercito() <<" Se muere" << std::endl;
-                        mapa.eliminarPersonaje(this);
+                        mapa->eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho - 1][pos_alto - 1]->getEjercito() == ejercito) {
@@ -265,7 +265,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                         }
                         else if (casillas[pos_ancho - 1][pos_alto] != nullptr) {
                             if (casillas[pos_ancho - 1][pos_alto]->getEjercito() != ejercito) {
-                                juego.combate(casillas[pos_ancho - 1][pos_alto], this); // El combate actualizara this -> vida
+                                juego->combate(casillas[pos_ancho - 1][pos_alto], this); // El combate actualizara this -> vida
                                 if (vida > 0) {
                                     pos -> set(pos_ancho - 1, pos_alto);
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
@@ -274,7 +274,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                                 }
                                 else {
                                     std::cout << this->getNombre() << this->getEjercito() <<" Se muere" << std::endl;
-                                    mapa.eliminarPersonaje(this);
+                                    mapa->eliminarPersonaje(this);
                                 }
                             }
                             else if (casillas[pos_ancho - 1][pos_alto]->getEjercito() == ejercito) {
@@ -302,7 +302,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             }
             else if (casillas[pos_ancho + 1][pos_alto] != nullptr) {
                 if (casillas[pos_ancho + 1][pos_alto]->getEjercito() != ejercito) {
-                    juego.combate(casillas[pos_ancho + 1][pos_alto], this); 
+                    juego->combate(casillas[pos_ancho + 1][pos_alto], this); 
                     if (vida > 0) {
                         pos -> set(pos_ancho + 1, pos_alto);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve abajo" << std::endl;
@@ -311,7 +311,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     }
                     else {
                         std::cout << this->getNombre() << this->getEjercito() <<" Se muere" << std::endl;
-                        mapa.eliminarPersonaje(this);
+                        mapa->eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho + 1][pos_alto]->getEjercito() == ejercito) {
@@ -333,7 +333,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             }
             else if (casillas[pos_ancho][pos_alto + 1] != nullptr) {
                 if (casillas[pos_ancho][pos_alto + 1]->getEjercito() != ejercito) {
-                    juego.combate(casillas[pos_ancho][pos_alto + 1], this); 
+                    juego->combate(casillas[pos_ancho][pos_alto + 1], this); 
                     if (vida > 0) {
                         pos -> set(pos_ancho, pos_alto + 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve derecha" << std::endl;
@@ -342,7 +342,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     }
                     else {
                         std::cout << this->getNombre() << this->getEjercito() <<" Se muere" << std::endl;
-                        mapa.eliminarPersonaje(this);
+                        mapa->eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho][pos_alto + 1]->getEjercito() == ejercito) {
@@ -364,7 +364,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             }
             else if (casillas[pos_ancho - 1][pos_alto] != nullptr) {
                 if (casillas[pos_ancho - 1][pos_alto]->getEjercito() != ejercito) {
-                    juego.combate(casillas[pos_ancho - 1][pos_alto], this); 
+                    juego->combate(casillas[pos_ancho - 1][pos_alto], this); 
                     if (vida > 0) {
                         pos -> set(pos_ancho - 1, pos_alto);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve arriba" << std::endl;
@@ -373,7 +373,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     }
                     else {
                         std::cout << this->getNombre() << this->getEjercito() <<" Se muere" << std::endl;
-                        mapa.eliminarPersonaje(this);
+                        mapa->eliminarPersonaje(this);
                     }
                 }
                 else if (casillas[pos_ancho - 1][pos_alto]->getEjercito() == ejercito) {
@@ -395,7 +395,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
             }
             else if (casillas[pos_ancho][pos_alto - 1] != nullptr) {
                 if (casillas[pos_ancho][pos_alto - 1]->getEjercito() != ejercito) {
-                    juego.combate(casillas[pos_ancho][pos_alto - 1], this); 
+                    juego->combate(casillas[pos_ancho][pos_alto - 1], this); 
                     if (vida > 0) {
                         pos -> set(pos_ancho, pos_alto - 1);
                         std::cout << this->getNombre() << this->getEjercito() <<" Se mueve izquierda" << std::endl;
@@ -404,7 +404,7 @@ Posicion Personaje::moverse(Mapa mapa, Juego juego) {
                     }
                     else {
                         std::cout << this->getNombre() << this->getEjercito() <<" Se muere" << std::endl;
-                        mapa.eliminarPersonaje(this);
+                        mapa->eliminarPersonaje(this);
                     }
                     }
                 else if (casillas[pos_ancho][pos_alto - 1]->getEjercito() == ejercito) {
