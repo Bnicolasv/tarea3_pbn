@@ -287,60 +287,54 @@ void Juego::jugar() {
             if(casillas[i][j] != nullptr){
                 casillas[i][j]->mapa = &mapa;
                 // cout << casillas[i][j]->mapa << endl;
-        }
-            //  else{
-            //     // cout << "Es un puntero nulo" << endl;
-            // //     casillas[i][j]->mapa = nullptr;
-            // }
+            }
         }
     }
 
-
-
-     if (equipo_inicial == 1){
+    if (equipo_inicial == 1){
         bool continuar = true;
         while (continuar){
             for (int i = 0; i < ancho; i++){
-                // cout << "Entra en este ciclo1" << endl;
                 for (int j = 0; j < alto; j++){
-                        // cout << "Entra en este ciclo2" << endl;
-                        // cout << casillas[i][j]->getPosicion().getX() << casillas[i][j]->getPosicion().getY() << endl;
                         if(casillas[i][j] != nullptr){
                             if (casillas[i][j]->getEjercito() == 1){
                                 // cout << casillas[i][j]->getPosicion().getX() << casillas[i][j]->getPosicion().getY() << endl;
-                                casillas[i][j]->moverse();
-                                mapa.agregarPersonaje(casillas[i][j]);
-                            
+                                // cout << nuevaPosicionX << "," << nuevaPosicionY << endl;
+                                Personaje* personajeActual = casillas[i][j];
+                                Personaje* personajeActualCopia = new Personaje;
+
+                                *personajeActualCopia = *personajeActual;
+
+                                personajeActualCopia->moverse();
+
+                                // Posicion pos_nueva = casillas[i][j]->moverse();
+                                // int pos_nuevaX = pos_nueva.getX();
+                                // int pos_nuevaY = pos_nueva.getY();
+                                //Hacer una copia del puntero
+                                mapa.agregarPersonaje(personajeActualCopia);
+                                delete personajeActual;
+
+
+                                // mapa.agregarPersonaje(casillas[pos_nuevaX][pos_nuevaY]);
+                                
+                                continue;
                             }
+            
                         }   
                         else{
                             continue;
                         }
                     }
-
                 } 
             continuar = false;
             }
         }
         
 
-    // else {
-    //     bool continuar = true;
-    //     int indice_ejercito1 = 0;  
-    //     while (continuar) {
-    //         for (int i = 0; i < cantidad_de_soldados2; i++) {
-    //             soldados_ejercito2[i]->moverse();
 
-    //             if (indice_ejercito1 < cantidad_de_soldados1) {
-    //                 soldados_ejercito2[indice_ejercito1]->moverse();
-    //                 indice_ejercito1++;
-    //             }
-    //         }
-    //         if (indice_ejercito1 >= cantidad_de_soldados2) {
-    //             continuar = false;  
-    //         }
-    //     }
-    // }
+
+        
+
 
     cout << "------------------------------------------------------------------" << endl;
 
@@ -349,12 +343,12 @@ void Juego::jugar() {
     // mostrarMapa();
     chequearGanador();    
 
-    for (int i = 0; i < cantidad_de_soldados1; i++) {
-        delete soldados_ejercito1[i];
-    }
+    // for (int i = 0; i < cantidad_de_soldados1; i++) {
+    //     delete soldados_ejercito1[i];
+    // }
 
-    for (int i = 0; i < cantidad_de_soldados2; i++) {
-        delete soldados_ejercito2[i];
-    }
+    // for (int i = 0; i < cantidad_de_soldados2; i++) {
+    //     delete soldados_ejercito2[i];
+    // }
 }
 
